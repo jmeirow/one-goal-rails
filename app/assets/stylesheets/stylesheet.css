@@ -878,10 +878,21 @@ input[type="file"]>input[type="button"]::-moz-focus-inner {
     cursor: default
 }
 
+/*
+
 @-moz-document url-prefix("http://") {
     input[type="submit"].button: : -moz-focus-inner, button.button: : -moz-focus-inner {
         border: 0;
         padding: 0
+    }
+*/
+
+
+
+/*@-moz-document url-prefix("http://") {
+    
+    input[type="submit"].button {
+        border: 0; padding: 0
     }
 
     input[type="submit"].tiny.button {
@@ -899,7 +910,7 @@ input[type="file"]>input[type="button"]::-moz-focus-inner {
     input[type="submit"].large.button {
         padding: 9px 48px 10px
     }
-}
+}*/
 
 div.alert-box {
     display: block;
@@ -5086,7 +5097,7 @@ input.ui-button {
         top: -.3em;
         margin-left: -.6em
     }
-    
+
     .ui-slider-horizontal .ui-slider-range {
         top: 0;
         height: 100%
