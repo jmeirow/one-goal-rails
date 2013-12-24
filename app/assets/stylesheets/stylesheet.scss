@@ -1308,7 +1308,7 @@ div.panel {
     background: -moz-linear-gradient(top, #fff 0%, #f4f4f4 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f4f4f4));
     background: -o-linear-gradient(top, #fff 0%, #f4f4f4 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='$white', endColorstr='$whitesmoke5', GradientType=0 );
+    /*filter: progid; DXImageTransform.Microsoft.gradient(startColorstr='$white', endColorstr='$whitesmoke5', GradientType=0 );*/
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
@@ -4971,10 +4971,12 @@ input.ui-button {
 
 .ui-buttonset .ui-button {
     margin-left: 0;
-    margin-right: -.3em}button.ui-button: : -moz-focus-inner {
-        border: 0;
-        padding: 0
-    }
+    margin-right: -.3em
+}
+.button .ui-button {
+    border: 0;
+    padding: 0
+}
 
     /*!
     * jQuery UI Dialog 1.8.20
@@ -5017,7 +5019,7 @@ input.ui-button {
         margin: 1px
     }
 
-    .ui-dialog .ui-dialog-titlebar-close: hover, .ui-dialog .ui-dialog-titlebar-close: focus {
+    .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
         padding: 0
     }
 
@@ -5376,12 +5378,12 @@ input.ui-button {
         right: auto
     }
 
-    .ui-datepicker-rtl .ui-datepicker-prev: hover {
+    .ui-datepicker-rtl .ui-datepicker-prev:hover {
         right: 1px;
         left: auto
     }
 
-    .ui-datepicker-rtl .ui-datepicker-next: hover {
+    .ui-datepicker-rtl .ui-datepicker-next:hover {
         left: 1px;
         right: auto
     }
@@ -5445,7 +5447,7 @@ input.ui-button {
         height: 100%
     }
 
-    .ui-state-error p: last-child, .ui-state-highlight p: last-child {
+    .ui-state-error p:last-child, .ui-state-highlight p:last-child {
         line-height: 16px;
         margin: 0.5em 0
     }
@@ -5463,7 +5465,7 @@ input.ui-button {
         padding-right: 20px
     }
 
-    .lt-ie8 .nav-bar li.has-flyout a: after {
+    .lt-ie8 .nav-bar li.has-flyout a:after {
         border-top: none
     }
 
