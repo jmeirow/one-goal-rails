@@ -31,7 +31,6 @@ class MembersController < ApplicationController
     user = User.find(session['user_id'].to_i)
     @member = Member.new(member_params.merge({:email => user.email, :user_id => user.id}))
 
-    binding.pry
         
 
     respond_to do |format|
