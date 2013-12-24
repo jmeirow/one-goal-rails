@@ -1,9 +1,28 @@
 OneGoal::Application.routes.draw do
+  
+
+
+  get 'user/edit' => 'users#edit', :as => :edit_current_user
+  get 'signup' => 'users#new', :as => :signup
+  get 'login' => 'sessions#new', :as => :login
+  get 'logout' => 'sessions#logout', :as => :logout
+
+  get 'home' => 'sessions#home', :as => :home
+
+
+
+  resources :sessions
+  resources :users
+  resources :goals 
+  resources :action_steps
+  resources  :members 
+  root 'sessions#home'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -26,7 +45,6 @@ OneGoal::Application.routes.draw do
   #     end
   #   end
 
-  resources  :members 
 
 
   # Example resource route with sub-resources:

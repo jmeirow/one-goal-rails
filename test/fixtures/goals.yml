@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  description: MyString
+  display_name: MyString
+  club_name: MyString
+  display_club: MyString
+  request_buddy: MyString
+
+two:
+  user_id: 1
+  description: MyString
+  display_name: MyString
+  club_name: MyString
+  display_club: MyString
+  request_buddy: MyString

@@ -11,15 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224010103) do
+ActiveRecord::Schema.define(version: 20131224163250) do
+
+  create_table "action_steps", force: true do |t|
+    t.string   "goal_id"
+    t.string   "description"
+    t.date     "target_date"
+    t.date     "completed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clubs", force: true do |t|
+    t.string   "name"
+    t.string   "area"
+    t.string   "division"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goals", force: true do |t|
+    t.integer  "user_id"
+    t.string   "description"
+    t.string   "display_name"
+    t.string   "club_name"
+    t.string   "display_club"
+    t.string   "request_buddy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.string   "email_address"
-    t.string   "club_name"
+    t.string   "email"
     t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

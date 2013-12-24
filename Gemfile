@@ -8,7 +8,10 @@ gem 'rails', '4.0.2'
 
 
 group :development, :test do
+  gem "nifty-generators"
   gem 'sqlite3'
+  gem 'pry'
+  gem 'pry_debug'
 end
 
 group :production do
@@ -43,8 +46,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+#Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -54,3 +57,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "mocha", group: :test

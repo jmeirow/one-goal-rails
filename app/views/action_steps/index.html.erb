@@ -1,0 +1,33 @@
+<h1>Listing action_steps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Description</th>
+      <th>Target date</th>
+      <th>Completed</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @action_steps.each do |action_step| %>
+      <tr>
+        <td><%= action_step.goal_id %></td>
+        <td><%= action_step.description %></td>
+        <td><%= action_step.target_date %></td>
+        <td><%= action_step.completed %></td>
+        <td><%= link_to 'Show', action_step %></td>
+        <td><%= link_to 'Edit', edit_action_step_path(action_step) %></td>
+        <td><%= link_to 'Destroy', action_step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Action step', new_action_step_path %>

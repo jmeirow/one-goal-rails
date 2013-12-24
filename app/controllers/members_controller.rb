@@ -1,3 +1,7 @@
+require 'pry'
+require 'pry_debug'
+
+
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
@@ -24,11 +28,15 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
+    user = User.find(session['user_id'].to_i)
+    @member = Member.new(member_params.merge({:email => user.email, :user_id => user.id}))
+
+    binding.pry
+        
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        format.html { redirect_to new_goal_path, notice: 'Member info successfully saved. Time to enter goal information.' }
         format.json { render action: 'show', status: :created, location: @member }
       else
         format.html { render action: 'new' }
@@ -69,6 +77,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :phone_number, :email_address, :club_name, :user_id)
+      params.require(:member).permit(:first_name, :last_name, :phone_number, :email,   :user_id)
     end
 end
