@@ -173,8 +173,8 @@
                 </td> 
                 <td>
                   <table>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "yes") %><%= label_tag(:wants_a_buddy_yes, "Yes, match me with a buddy.") %></td></tr>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "no")  %><%= label_tag(:wants_a_buddy_yes, "No, I will use my own buddy.") %></td></tr> 
+                    <tr><td><%= f.radio_button :wants_a_buddy, "yes",  checked: false  %><label>Yes, match me with a buddy.</label></td></tr>
+                    <tr><td><%= f.radio_button :wants_a_buddy, "no", checked: false   %><label>No, I will use my own buddy.</label></td></tr> 
                   </table>
                 </td>
               </tr>

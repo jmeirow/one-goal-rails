@@ -30,7 +30,7 @@ class Member < ActiveRecord::Base
 
   def buddy_selection 
     puts "The value of 'wants_a_buddy is: #{wants_a_buddy}"
-    unless ['Yes','No'].include? self[:wants_a_buddy]
+    unless ['yes','no'].include? self[:wants_a_buddy]
       errors.add :choose_a_buddy, ":  Must select 'Yes, match me with a buddy' or 'No, I will use my own buddy'.  " 
     end
   end
