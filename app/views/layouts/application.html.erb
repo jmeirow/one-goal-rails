@@ -14,24 +14,29 @@
 			
 
 			<% if session.keys.include? 'user_id' %>
-			<div class='container'  style='width:100%'>
-				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
-					<tr class='row'>
-						<td style='text-align:center;font-size:14pt'><a href='goal.html'>My ONE Goal</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='milestones.html'>Action Steps</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='marquee_settings.html'>My Marquee Setting</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='marquee.html'>Public Marquee</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
-					</tr>
-				</table>
-			</div>
+				<% member = Member.where("user_id = ?",session['user_id'].to_i).first  %>
+				<div class='container'  style='width:100%'>
+					<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
+						<% if member.nil? == false %>
+							<tr class='row'><td colspan=5>Logged in as: <%= "#{member.first_name} #{member.last_name}" %></td></tr>
+						<% end %>
+						<tr class='row'>
+							<td style='text-align:center;font-size:14pt'><a href='goal.html'>My ONE Goal</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='milestones.html'>Action Steps</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='marquee_settings.html'>My Marquee Setting</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='marquee.html'>Public Marquee</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
+						</tr>
+					</table>
+				</div>
+				
 			<% else %>
 				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
 					<tr class='row'>
 						<td style='text-align:center;font-size:14pt'><a href='/home'>Home</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/signup'>Register</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/login'>Login</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='about.html'>About</a></td>
+						<td style='text-align:center;font-size:14pt'><a href='/login'>Log In</a></td>
+						<td style='text-align:center;font-size:14pt'><a href='/about'>About</a></td>
 					</tr>
 				</table>
 
@@ -44,6 +49,7 @@
 
 <div style='margin-left:30px'>
 <%= yield %>
+
 </div>
 
 </body>

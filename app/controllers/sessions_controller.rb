@@ -1,8 +1,16 @@
+require 'pry'
+require 'pry_debug'
+
+
 
 class SessionsController < ApplicationController
  
 
   def home
+  end
+
+  def about
+
   end
 
   def new
@@ -12,19 +20,28 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login], params[:password])
     if user
       session[:user_id] = user.id
-
-      next_step = SessionsController.get_next_step(user) 
-      if next_step == SessionsController.member_info
-        redirect_to new_member_path, :notice => "Please provide the following information about yourself."
-      elsif next_step == SessionsController.goal 
-        redirect_to  new_goal_path, :notice => "It's time to define your goal."
-      elsif next_step == SessionsController.action_items
-        redirect_to  new_action_item_path, :notice => "Logged in successfully."
-      end 
+      redirect_to '/determine_next_step'
     else
       flash.now[:alert] = "Invalid login or password."
       render :action => 'new'
     end
+  end
+
+
+  def determine_next_step
+
+    user = User.find(session[:user_id].to_i)
+
+    next_step = SessionsController.get_next_step(user) 
+
+    if next_step == SessionsController.member_info
+      redirect_to new_member_path, :notice => "Please provide the following information about yourself."
+    elsif next_step == SessionsController.goal 
+      redirect_to  new_goal_path, :notice => "It's time to define your goal."
+    elsif next_step == SessionsController.action_items
+      redirect_to  new_action_item_path, :notice => "Logged in successfully."
+    end 
+
   end
 
   def destroy
@@ -53,6 +70,7 @@ class SessionsController < ApplicationController
   def self.action_items 
     'action_items'
   end
+  
   def self.member_info
     'member_info'
   end

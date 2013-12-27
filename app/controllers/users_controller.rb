@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to members_path, :notice => "Thank you for signing up! You are now logged in."
+      redirect_to '/determine_next_step', :notice => "Thank you for signing up! You are now logged in."
     else
       render :action => 'new', :notice => "Oops! There was some kind of error. Please try again."
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_hash, :password_salt )
+      params.require(:user).permit(:username, :email, :password_confirmation,  :password )
     end
 
 

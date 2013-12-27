@@ -8,6 +8,9 @@ OneGoal::Application.routes.draw do
   get 'logout' => 'sessions#logout', :as => :logout
 
   get 'home' => 'sessions#home', :as => :home
+  get 'about' => 'sessions#about', :as => :about
+
+  get 'determine_next_step'  => 'sessions#determine_next_step', :as => :determine_next_step
 
 
 
@@ -16,7 +19,7 @@ OneGoal::Application.routes.draw do
   resources :goals 
   resources :action_steps
   resources  :members 
-  root 'sessions#home'
+  root 'sessions#about'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -6,7 +6,9 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    #@members = Member.all
+    raise "halted here"
+
   end
 
   # GET /members/1
@@ -27,7 +29,7 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     user = User.find(session['user_id'].to_i)
-    @member = Member.new(member_params.merge({:email => user.email, :user_id => user.id}))
+    @member = Member.new(member_params)
 
         
 
@@ -74,6 +76,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :phone_number, :email,   :user_id)
+      params.require(:member).permit(:first_name, :last_name, :phone_number, :wants_a_buddy, :club_name)
     end
 end
