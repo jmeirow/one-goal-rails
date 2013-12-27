@@ -1,7 +1,3 @@
-require 'pry'
-require 'pry_debug'
-
-
 
 class SessionsController < ApplicationController
  
