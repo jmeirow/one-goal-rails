@@ -6,9 +6,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    #@members = Member.all
-    raise "halted here"
-
+    @members = Member.all
   end
 
   # GET /members/1
@@ -28,8 +26,9 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    user = User.find(session['user_id'].to_i)
+    
     @member = Member.new(member_params)
+    @member.user_id =  session['user_id'].to_i
 
         
 

@@ -24,6 +24,11 @@ class SessionsController < ApplicationController
   end
 
 
+  def buddy_tooltip
+
+  end
+
+
   def determine_next_step
 
     user = User.find(session[:user_id].to_i)
@@ -35,7 +40,7 @@ class SessionsController < ApplicationController
     elsif next_step == SessionsController.goal 
       redirect_to  new_goal_path, :notice => "It's time to define your goal."
     elsif next_step == SessionsController.action_items
-      redirect_to  new_action_item_path, :notice => "Logged in successfully."
+      redirect_to  new_goal_path, :notice => "Logged in successfully."
     end 
 
   end

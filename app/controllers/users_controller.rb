@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
+  def index
+
+  end
+
   def new
     @user = User.new
   end

@@ -12,7 +12,7 @@ OneGoal::Application.routes.draw do
 
   get 'determine_next_step'  => 'sessions#determine_next_step', :as => :determine_next_step
 
-
+  get 'buddy_tooltip' => 'sessions#buddy_tooltip', :as => :buddy_tooltip
 
   resources :sessions
   resources :users

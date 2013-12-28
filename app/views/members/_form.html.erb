@@ -13,6 +13,13 @@
 
  
 
+<%
+
+buddy_text = 'The ONE Goal program uses "buddies" to provide encouragement and accountability. Would you like us to match you with a buddy or would you like to use your existing mentor or another Toastmaster you already know? (If we match you with a buddy, you will receive an email with their contact information.)'
+
+
+%>
+
   <div>
 
 
@@ -34,147 +41,16 @@
             </tr>
             <tr class='tr'>
               <td width=400px style='font-size:12pt'><label>Club Name</label></td>
-              <td>   <%=  select_tag(:club_name, options_for_select(
-                        [
-
-                        [''],[''],
-                        ['A Toast to Clean Air','A Toast to Clean Air'],
-                        ['Acorn Toastmasters Club','Acorn Toastmasters Club'],
-                        ['Advanced Articulators Club','Advanced Articulators Club'],
-                        ['Ann Arbor CIL Toastmasters','Ann Arbor CIL Toastmasters'],
-                        ['Ann Arbor Toastmasters And Friends Club','Ann Arbor Toastmasters And Friends Club'],
-                        ['Anthony Wayne Toastmasters Club','Anthony Wayne Toastmasters Club'],
-                        ['BASF Toastmasters','BASF Toastmasters'],
-                        ['BCBSM-Metro Masters Club','BCBSM-Metro Masters Club'],
-                        ['Birmingham Club','Birmingham Club'],
-                        ['Bloomfield Toastmasters Club','Bloomfield Toastmasters Club'],
-                        ['BookMasters','BookMasters'],
-                        ['Bosch Igniters Club','Bosch Igniters Club'],
-                        ['Buckeye Toastmasters Club','Buckeye Toastmasters Club'],
-                        ['C Notes','C Notes'],
-                        ['Cadsquare Hour of Power Toastmasters Club','Cadsquare Hour of Power Toastmasters Club'],
-                        ['Canadian Club of Southwestern Ontario','Canadian Club of Southwestern Ontario'],
-                        ['Canton Communicators Club','Canton Communicators Club'],
-                        ['Carhartt Toastmasters','Carhartt Toastmasters'],
-                        ['Chatham On The Thames Toastmasters','Chatham On The Thames Toastmasters'],
-                        ['Chatham-Kent Toastmasters','Chatham-Kent Toastmasters'],
-                        ['Compucators Club','Compucators Club'],
-                        ['Confident Communicators Club','Confident Communicators Club'],
-                        ['Continental Automotive Systems Toastmasters','Continental Automotive Systems Toastmasters'],
-                        ['Credible Communicators','Credible Communicators'],
-                        ['Dearborn Dynamic Toastmasters Club','Dearborn Dynamic Toastmasters Club'],
-                        ['Detroit Diesel Toastmasters','Detroit Diesel Toastmasters'],
-                        ['Detroit Riverfront Bards','Detroit Riverfront Bards'],
-                        ['DETROIT ROCKS! Club','DETROIT ROCKS! Club'],
-                        ['Downriver Ambassadors Club','Downriver Ambassadors Club'],
-                        ['Dream Builders','Dream Builders'],
-                        ['DTE Energy Speech Masters','DTE Energy Speech Masters'],
-                        ['Findlay Old Millstream Club','Findlay Old Millstream Club'],
-                        ['First Center Speakeasy Club','First Center Speakeasy Club'],
-                        ['Fluid Prose','Fluid Prose'],
-                        ['Ford Toastmasters Club','Ford Toastmasters Club'],
-                        ['Fremont Club','Fremont Club'],
-                        ['Friends of Farmington','Friends of Farmington'],
-                        ['Gale | Cengage Learning, Inc.','Gale | Cengage Learning, Inc.'],
-                        ['GE Toastmasters of Detroit','GE Toastmasters of Detroit'],
-                        ['Glass City Toastmasters','Glass City Toastmasters'],
-                        ['Great Eastern Toastmasters Club','Great Eastern Toastmasters Club'],
-                        ['Great Lakes Real Orators Club','Great Lakes Real Orators Club'],
-                        ['Habitat For Humanity Detroit','Habitat For Humanity Detroit'],
-                        ['Huron Valley Club','Huron Valley Club'],
-                        ['Innovative Orators','Innovative Orators'],
-                        ['iTalk Toastmasters','iTalk Toastmasters'],
-                        ['Kahn We Talk Toastmasters Club','Kahn We Talk Toastmasters Club'],
-                        ['Laff Out Loud Club','Laff Out Loud Club'],
-                        ['Leadership 28 Toastmasters','Leadership 28 Toastmasters'],
-                        ['Lenawee Evening Toast Club','Lenawee Evening Toast Club'],
-                        ['Masco Cabinetry Toastmasters','Masco Cabinetry Toastmasters'],
-                        ['MBFS All Stars','MBFS All Stars'],
-                        ['Michigan First Credit Union Toastmasters','Michigan First Credit Union Toastmasters'],
-                        ['Michigan Toastmasters','Michigan Toastmasters'],
-                        ['Momentum Toastmasters Club','Momentum Toastmasters Club'],
-                        ['Monroe Toastmasters Club','Monroe Toastmasters Club'],
-                        ['Motor City Speak Easy Toastmasters Club','Motor City Speak Easy Toastmasters Club'],
-                        ['New Center Toastmasters Club','New Center Toastmasters Club'],
-                        ['Northeastern Club','Northeastern Club'],
-                        ['Northern Toastmasters Club','Northern Toastmasters Club'],
-                        ['Northwest Ohio Toastmasters','Northwest Ohio Toastmasters'],
-                        ['Northwood Toastmasters Club','Northwood Toastmasters Club'],
-                        ['Novi Toastmasters Club','Novi Toastmasters Club'],
-                        ['NSF Toastmasters Club','NSF Toastmasters Club'],
-                        ['Oak Park Toastmasters Club','Oak Park Toastmasters Club'],
-                        ['Odette School of Business Toastmasters','Odette School of Business Toastmasters'],
-                        ['Optimistic Orators Club','Optimistic Orators Club'],
-                        ['PMI HVC Toastmasters','PMI HVC Toastmasters'],
-                        ['Positively Speaking Toastmasters','Positively Speaking Toastmasters'],
-                        ['Powertalkers Downtown Club','Powertalkers Downtown Club'],
-                        ['Professionally Speaking','Professionally Speaking'],
-                        ['RCB Toastmasters','RCB Toastmasters'],
-                        ['Respectively Speaking Club','Respectively Speaking Club'],
-                        ['RGIS Toastmasters','RGIS Toastmasters'],
-                        ['Rochester Toastmasters Club','Rochester Toastmasters Club'],
-                        ['RSB Toastmasters','RSB Toastmasters'],
-                        ['Saturday Sunrisers Club','Saturday Sunrisers Club'],
-                        ['Seneca Club','Seneca Club'],
-                        ['Shores Club','Shores Club'],
-                        ['Simply Speaking Club','Simply Speaking Club'],
-                        ['Skillmasters Club','Skillmasters Club'],
-                        ['Smooth Talkers Club','Smooth Talkers Club'],
-                        ['SpeakEasy Toastmasters of Shelby Township','SpeakEasy Toastmasters of Shelby Township'],
-                        ['Speakers Club','Speakers Club'],
-                        ['SpeakOUT!','SpeakOUT!'],
-                        ['St. Clair River Club','St. Clair River Club'],
-                        ['Sterling Speakers','Sterling Speakers'],
-                        ['Success Builders Toastmasters','Success Builders Toastmasters'],
-                        ['Sydenham Toastmasters','Sydenham Toastmasters'],
-                        ['Tankmasters Club','Tankmasters Club'],
-                        ['Tech Town Toastmasters','Tech Town Toastmasters'],
-                        ['Tecumseh Area Toastmasters','Tecumseh Area Toastmasters'],
-                        ['Telegraph Toastmasters','Telegraph Toastmasters'],
-                        ['The Innovators Club','The Innovators Club'],
-                        ['The Remarketing Rhetoricians','The Remarketing Rhetoricians'],
-                        ['The Toast Of Dearborn Club','The Toast Of Dearborn Club'],
-                        ['The Toast of Masco','The Toast of Masco'],
-                        ['The Wind Baggers Club','The Wind Baggers Club'],
-                        ['Tier 1 Talkers Club','Tier 1 Talkers Club'],
-                        ['TMZ - Toast Masters Zone At WMBC','TMZ - Toast Masters Zone At WMBC'],
-                        ['Toastmaster Titans','Toastmaster Titans'],
-                        ['Toastmasters At Walsh College - Troy','Toastmasters At Walsh College - Troy'],
-                        ['Toastmasters at Walsh College-Novi','Toastmasters at Walsh College-Novi'],
-                        ['Toastmasters Lasalle','Toastmasters Lasalle'],
-                        ['Toledo Club Toastmasters','Toledo Club Toastmasters'],
-                        ['Top of Troy Club','Top of Troy Club'],
-                        ['Torque Talkers','Torque Talkers'],
-                        ['Trend-Setters Toastmasters Club','Trend-Setters Toastmasters Club'],
-                        ['Union Gas LDN Toastmasters','Union Gas LDN Toastmasters'],
-                        ['Unity Club','Unity Club'],
-                        ['Unity IV Toastmasters','Unity IV Toastmasters'],
-                        ['Wadsworth Center Toastmasters','Wadsworth Center Toastmasters'],
-                        ['Warren Toastmasters Club','Warren Toastmasters Club'],
-                        ['Washtenaw Toastmasters Club','Washtenaw Toastmasters Club'],
-                        ['Westgate Club','Westgate Club'],
-                        ['Westland Easytalkers Toastmasters Club','Westland Easytalkers Toastmasters Club'],
-                        ['Westside Professionals','Westside Professionals'],
-                        ['Westside Toastmasters Club','Westside Toastmasters Club'],
-                        ['Williams International','Williams International'],
-                        ['Windsor Toastmasters','Windsor Toastmasters'],
-                        ['Windsor TSO Toastmasters','Windsor TSO Toastmasters'],
-                        ['Windsorateurs','Windsorateurs'],
-                        ['Zenobia Speakeasy Club','Zenobia Speakeasy Club']
-                        ])
-
-
-                ) %>
-                </td>
+              <td>   <%= f.select :club_name,  Club.all.collect { |c| [c.name, c.name] } ,  { include_blank: true } , :selected => @member.club_name  %> </td>
               </tr>
               <tr class='tr'>
                 <td width=400px style='font-size:12pt'>
-                    The ONE Goal program uses "buddies" to provide encouragement and accountability. Would you like us to match you with a buddy or would you like to use your existing mentor or another Toastmaster you already know? (If we match you with a buddy, you will receive an email with their contact information.)
+                  Want a buddy? More about buddies...<%= link_to '(hover here)', '#', title: buddy_text, rel: 'tooltip' %>
                 </td> 
                 <td>
                   <table>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "yes",  checked: false  %><label>Yes, match me with a buddy.</label></td></tr>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "no", checked: false   %><label>No, I will use my own buddy.</label></td></tr> 
+                    <tr><td><%= f.radio_button :wants_a_buddy, "y",  checked: false , :checked => (@member.wants_a_buddy == 'y') %><label>Yes, match me with a buddy.</label></td></tr>
+                    <tr><td><%= f.radio_button :wants_a_buddy, "n", checked: false, :checked =>  (@member.wants_a_buddy == 'n')   %><label>No, I will use my own buddy.</label></td></tr> 
                   </table>
                 </td>
               </tr>

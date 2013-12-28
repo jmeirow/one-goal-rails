@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227032801) do
+ActiveRecord::Schema.define(version: 20131228024936) do
 
   create_table "action_steps", force: true do |t|
     t.string   "goal_id"
@@ -33,12 +33,9 @@ ActiveRecord::Schema.define(version: 20131227032801) do
   create_table "goals", force: true do |t|
     t.integer  "user_id"
     t.string   "description"
-    t.string   "display_name"
-    t.string   "club_name"
-    t.string   "display_club"
-    t.string   "request_buddy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "note"
   end
 
   create_table "logins", force: true do |t|

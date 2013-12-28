@@ -1,3 +1,11 @@
+
+<% if notice %>
+  <div style='margin-left:30px;margin-bottom:20px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
+     <div><%= notice %>   </div>
+  </div>
+<% end %>
+
+
 <%= form_for(@goal) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
@@ -12,27 +20,53 @@
   <% end %>
 
  
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :display_name %><br>
-    <%= f.text_field :display_name %>
-  </div>
-  <div class="field">
-    <%= f.label :club_name %><br>
-    <%= f.text_field :club_name %>
-  </div>
-  <div class="field">
-    <%= f.label :display_club %><br>
-    <%= f.text_field :display_club %>
-  </div>
-  <div class="field">
-    <%= f.label :request_buddy %><br>
-    <%= f.text_field :request_buddy %>
-  </div>
-  <div class="actions">
+
+    <div style='
+        font-size:18px;
+        height:50px;
+        margin-left:20px;
+        border-top-left-radius:10px;
+        border-top-right-radius:10px;
+        width:400px;
+        background-color:maroon;
+        color:white;
+        margin-left:30px;
+        '>
+        <br/>
+        <span style='margin-top:10px;margin-left:120px'>
+          My ONE Goal
+        </span>
+    </div>
+    <div style='
+      font-size:18px;
+      margin-left:30px;
+      width:90%;
+      height:400px;
+      border-bottom-left-radius:10px;
+      border-bottom-right-radius:10px;
+      border-top-right-radius:10px;
+      border:2px solid;
+      border-color:#800000'>
+      <br/>
+
+      <div style='margin-left:27px;margin-top:20px'>
+          <%= f.text_area :description,  :rows => 5, :cols => 10 %>
+      </div>
+      <p style='margin-left:30px; margin-top:-7px'>Enter your ONE Goal as you would like it to be visible to other members. It will be displayed to other D28 members in the ONE Goal Marquee.</p><br>
+
+
+      <div style='margin-left:27px;margin-top:20px'>
+        <%= f.text_area :note,  :rows => 5, :cols => 10 %>
+      </div>
+      <p style='margin-left:30px; margin-top:-7px'>Enter any addtional notes here. These will <strong>not</strong> be displayed publicly</p><br>
+    
+    </div>
+   
+
+
+
+
+  <div style='margin-left:30px;margin-top:20px' class="actions">
     <%= f.submit %>
   </div>
 <% end %>

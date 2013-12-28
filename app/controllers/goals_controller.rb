@@ -14,7 +14,8 @@ class GoalsController < ApplicationController
 
   # GET /goals/new
   def new
-    @goal = Goal.new
+    @goal = Goal.where("user_id = ?", session[:user_id].to_i).first
+    @goal = Goal.new if @goal.nil?  
   end
 
   # GET /goals/1/edit
@@ -24,11 +25,14 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
+
     @goal = Goal.new(goal_params)
+    @goal.user_id = session['user_id'].to_i
+
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+        format.html { redirect_to new_goal_path, notice: 'Goal was successfully created.' }
         format.json { render action: 'show', status: :created, location: @goal }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
+        format.html { redirect_to new_goal_path, notice: 'Goal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +73,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:user_id, :description, :display_name, :club_name, :display_club, :request_buddy)
+      params.require(:goal).permit(:user_id, :description, :note)
     end
 end

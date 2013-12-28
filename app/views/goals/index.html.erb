@@ -20,10 +20,6 @@
       <tr>
         <td><%= goal.user_id %></td>
         <td><%= goal.description %></td>
-        <td><%= goal.display_name %></td>
-        <td><%= goal.club_name %></td>
-        <td><%= goal.display_club %></td>
-        <td><%= goal.request_buddy %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
