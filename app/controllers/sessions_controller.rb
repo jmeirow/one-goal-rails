@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     elsif next_step == SessionsController.goal 
       redirect_to  new_goal_path, :notice => "It's time to define your goal."
     elsif next_step == SessionsController.action_items
-      redirect_to  new_goal_path, :notice => "Logged in successfully."
+      redirect_to  action_steps_path, :notice => "Logged in successfully."
     end 
 
   end

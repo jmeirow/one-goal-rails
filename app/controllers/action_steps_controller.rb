@@ -1,10 +1,15 @@
+require 'pp'
+
 class ActionStepsController < ApplicationController
+
+
+
   before_action :set_action_step, only: [:show, :edit, :update, :destroy]
 
   # GET /action_steps
   # GET /action_steps.json
   def index
-    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id =? ", session['user_id'].to_i).first.id)
+    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id = ? ", session['user_id'].to_i).first.id)
   end
 
   # GET /action_steps/1
@@ -24,13 +29,11 @@ class ActionStepsController < ApplicationController
   # POST /action_steps
   # POST /action_steps.json
   def create
-    puts "ACTION STEP PARAMS PRINTED BELOW:"
     @action_step = ActionStep.new(action_step_params)
     @action_step.goal_id = Goal.where("user_id =? ", session['user_id'].to_i).first.id
-
     respond_to do |format|
       if @action_step.save
-        format.html { redirect_to @action_step, notice: 'Action step was successfully created.' }
+        format.html { redirect_to action_steps_path, notice: 'Action step was successfully created.' }
         format.json { render action: 'show', status: :created, location: @action_step }
       else
         format.html { render action: 'new' }
@@ -44,7 +47,7 @@ class ActionStepsController < ApplicationController
   def update
     respond_to do |format|
       if @action_step.update(action_step_params)
-        format.html { redirect_to @action_step, notice: 'Action step was successfully updated.' }
+        format.html { redirect_to action_steps_path, notice: 'Action step was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -62,6 +65,16 @@ class ActionStepsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def complete_action_step
+    step = ActionStep.find(params['id'].to_i)
+    step.completed = Date.today.to_s
+    step.save
+    redirect_to action_steps_path
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

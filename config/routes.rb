@@ -11,11 +11,12 @@ OneGoal::Application.routes.draw do
   get 'about' => 'sessions#about', :as => :about
 
   get 'determine_next_step'  => 'sessions#determine_next_step', :as => :determine_next_step
-
   get 'unauthorized_access' => 'sessions#unauthorized_access', :as => :unauthorized_access
 
 
-  
+  get 'complete_action_step/:id' => 'action_steps#complete_action_step', :as => :complete_action_step
+
+
 
 
   resources :sessions

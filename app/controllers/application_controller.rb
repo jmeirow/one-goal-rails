@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
 
   def logged_in?
-    session.keys.include?('user_id') && !session[:user_id].nil?
+    !session[:user_id].nil?
   end
 
 
