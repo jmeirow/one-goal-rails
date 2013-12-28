@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228135040) do
+ActiveRecord::Schema.define(version: 20131228163307) do
 
   create_table "action_steps", force: true do |t|
     t.integer  "goal_id",     limit: 255
@@ -55,12 +55,12 @@ ActiveRecord::Schema.define(version: 20131228135040) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.integer  "user_id",         limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "wants_a_buddy"
     t.integer  "buddy_member_id"
     t.string   "club_name"
+    t.integer  "user_id"
   end
 
   create_table "system_texts", force: true do |t|
