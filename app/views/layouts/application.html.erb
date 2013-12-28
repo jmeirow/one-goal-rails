@@ -21,10 +21,16 @@
 							<tr class='row'><td colspan=5>Logged in as: <%= "#{member.first_name} #{member.last_name}" %></td></tr>
 						<% end %>
 						<tr class='row'>
-							<td style='text-align:center;font-size:14pt'><a href='goal.html'>My ONE Goal</a></td>
-							<td style='text-align:center;font-size:14pt'><a href='milestones.html'>Action Steps</a></td>
-							<td style='text-align:center;font-size:14pt'><a href='marquee_settings.html'>My Marquee Setting</a></td>
-							<td style='text-align:center;font-size:14pt'><a href='marquee.html'>Public Marquee</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='/goals/new'>My ONE Goal</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='/action_steps'>Action Steps</a></td>
+							<td style='text-align:center;font-size:14pt'><a href='/resources'>Resources</a></td>
+
+							<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %>
+
+							<% if user_is_admin %>
+								<td style='text-align:center;font-size:14pt'><a href='/system_texts'>System Text</a></td>
+							<% end %>
+
 							<td style='text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
 						</tr>
 					</table>
@@ -34,9 +40,10 @@
 				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
 					<tr class='row'>
 						<td style='text-align:center;font-size:14pt'><a href='/home'>Home</a></td>
+						<td style='text-align:center;font-size:14pt'><a href='/about'>Tell Me More</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/signup'>Register</a></td>
+						<td style='text-align:center;font-size:14pt'><a href='/faq'>FAQ</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/login'>Log In</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/about'>About</a></td>
 					</tr>
 				</table>
 

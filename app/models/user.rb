@@ -34,9 +34,6 @@ class User < ActiveRecord::Base
   end
 
 
-  def action_steps user
-    Goal.for_user user
-  end
 
   def self.member_info_created? user 
     Member.count(user) == 1

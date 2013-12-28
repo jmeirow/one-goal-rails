@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @system_text.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @system_text.value %>
+</p>
+
+<%= link_to 'Edit', edit_system_text_path(@system_text) %> |
+<%= link_to 'Back', system_texts_path %>

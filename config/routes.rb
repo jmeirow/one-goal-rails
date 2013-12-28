@@ -12,13 +12,19 @@ OneGoal::Application.routes.draw do
 
   get 'determine_next_step'  => 'sessions#determine_next_step', :as => :determine_next_step
 
-  get 'buddy_tooltip' => 'sessions#buddy_tooltip', :as => :buddy_tooltip
+  get 'unauthorized_access' => 'sessions#unauthorized_access', :as => :unauthorized_access
+
+
+  
+
 
   resources :sessions
   resources :users
   resources :goals 
   resources :action_steps
-  resources  :members 
+  resources :members 
+  resources :system_texts
+
   root 'sessions#about'
 
 

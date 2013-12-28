@@ -24,10 +24,6 @@ class SessionsController < ApplicationController
   end
 
 
-  def buddy_tooltip
-
-  end
-
 
   def determine_next_step
 

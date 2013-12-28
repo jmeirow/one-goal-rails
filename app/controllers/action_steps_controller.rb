@@ -4,7 +4,7 @@ class ActionStepsController < ApplicationController
   # GET /action_steps
   # GET /action_steps.json
   def index
-    @action_steps = User.action_steps
+    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id =? ", session['user_id'].to_i).first.id)
   end
 
   # GET /action_steps/1
@@ -24,7 +24,9 @@ class ActionStepsController < ApplicationController
   # POST /action_steps
   # POST /action_steps.json
   def create
+    puts "ACTION STEP PARAMS PRINTED BELOW:"
     @action_step = ActionStep.new(action_step_params)
+    @action_step.goal_id = Goal.where("user_id =? ", session['user_id'].to_i).first.id
 
     respond_to do |format|
       if @action_step.save

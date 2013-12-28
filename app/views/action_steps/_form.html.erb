@@ -10,24 +10,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :goal_id %><br>
-    <%= f.text_field :goal_id %>
-  </div>
+ 
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
-    <%= f.label :target_date %><br>
-    <%= f.date_select :target_date %>
+    <label>Target Date <span style='font-size:10pt;color:gray'>(Please enter as MM/DD/YYYY)</span></label>
+    <%= f.text_field :target_date %>  
   </div>
+  
   <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.date_select :completed %>
+    <label>Date Completed <span style='font-size:10pt;color:gray'>(Please enter as MM/DD/YYYY)</span></label>
+    <%= f.text_field :completed %>  
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  "Save Action Step" %>
   </div>
 <% end %>

@@ -1,0 +1,29 @@
+<h1>Configure Text for ONE Goal</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @system_texts.each do |system_text| %>
+      <tr>
+        <td><%= system_text.key %></td>
+        <td><%= system_text.value %></td>
+        <td><%= link_to 'Show', system_text %></td>
+        <td><%= link_to 'Edit', edit_system_text_path(system_text) %></td>
+        <td><%= link_to 'Destroy', system_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System Text Entry', new_system_text_path %>

@@ -1,0 +1,1 @@
+Date::DATE_FORMATS[:default] = "%m/%d/%Y"  # 12/28/2013
