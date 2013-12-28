@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228163307) do
+ActiveRecord::Schema.define(version: 20131228164045) do
 
   create_table "action_steps", force: true do |t|
-    t.integer  "goal_id",     limit: 255
     t.string   "description"
     t.date     "target_date"
     t.date     "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "goal_id"
   end
 
   create_table "administrators", force: true do |t|
