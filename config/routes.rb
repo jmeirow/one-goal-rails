@@ -3,20 +3,26 @@ OneGoal::Application.routes.draw do
 
 
   get 'user/edit' => 'users#edit', :as => :edit_current_user
+
   get 'signup' => 'users#new', :as => :signup
+  
   get 'login' => 'sessions#new', :as => :login
+  
   get 'logout' => 'sessions#logout', :as => :logout
 
   get 'home' => 'sessions#home', :as => :home
+
   get 'about' => 'sessions#about', :as => :about
 
   get 'determine_next_step'  => 'sessions#determine_next_step', :as => :determine_next_step
+
   get 'unauthorized_access' => 'sessions#unauthorized_access', :as => :unauthorized_access
 
 
   get 'complete_action_step/:id' => 'action_steps#complete_action_step', :as => :complete_action_step
 
   get 'resources' => 'sessions#resources', :as => :resources
+
   get 'faq' => 'sessions#faq', :as => :faq
 
 
@@ -27,7 +33,7 @@ OneGoal::Application.routes.draw do
   resources :members 
   resources :system_texts
 
-  root 'sessions#login'
+  root 'sessions#new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
