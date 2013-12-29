@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def about
+  end
 
+  def resources
   end
 
   def new

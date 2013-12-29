@@ -1,7 +1,20 @@
 <h1>Configure Text for ONE Goal</h1>
 
-<table>
+<% if notice %>
+  <div style=';margin-left:30px; ;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
+     <div><%= notice %>   </div>
+  </div>
+<% end %>
+
+
+<table <table style='
+      font-size:12px;
+      margin-left:30px;
+      width:90%;
+      border:2px solid;
+      border-color:#800000'>
   <thead>
+      <tr><td colspan=5   style='text-align:right;'><%= link_to 'New System Text Entry', new_system_text_path %></td></tr>
     <tr>
       <th>Key</th>
       <th>Value</th>
@@ -11,14 +24,15 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @system_texts.each do |system_text| %>
       <tr>
         <td><%= system_text.key %></td>
-        <td><%= system_text.value %></td>
+        <td><%= "#{system_text.value.slice(0,100)}..." %></td>
         <td><%= link_to 'Show', system_text %></td>
         <td><%= link_to 'Edit', edit_system_text_path(system_text) %></td>
-        <td><%= link_to 'Destroy', system_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', system_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +40,5 @@
 
 <br>
 
-<%= link_to 'New System Text Entry', new_system_text_path %>
+<%= paginate @system_texts %>
+

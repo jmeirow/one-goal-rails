@@ -2,7 +2,7 @@ require 'pp'
 
 class ActionStep < ActiveRecord::Base
 
-
+  paginates_per 5
 
   validate :target_date_format , :completed_date_format 
 
@@ -10,7 +10,8 @@ class ActionStep < ActiveRecord::Base
 
   def target_date_format
     begin
-      self['target_date'] =  @attributes['target_date'].to_s
+      #self['target_date'] =  
+      @attributes['target_date'].to_s
     rescue Exception => e
       errors.add :target_date, ":  Must be entered in mm/dd/yyyy format'.  " 
     end
@@ -19,7 +20,8 @@ class ActionStep < ActiveRecord::Base
   def completed_date_format
     begin
       if @attributes['completed'].nil? == false
-        self['completed'] = @attributes['completed'].to_s
+        #self['completed'] = 
+        @attributes['completed'].to_s
       end
     rescue Exception => e
       errors.add :completed_date, ":  Must be entered in mm/dd/yyyy format'.  " 

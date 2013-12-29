@@ -19,6 +19,8 @@ group :production do
 end
 
 
+gem 'kaminari'
+
 gem 'american_date'
 
 # Use SCSS for stylesheets

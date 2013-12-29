@@ -16,7 +16,7 @@ OneGoal::Application.routes.draw do
 
   get 'complete_action_step/:id' => 'action_steps#complete_action_step', :as => :complete_action_step
 
-
+  get 'resources' => 'sessions#resources', :as => :resources
 
 
   resources :sessions

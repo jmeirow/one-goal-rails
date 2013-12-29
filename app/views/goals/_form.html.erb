@@ -1,6 +1,6 @@
 
 <% if notice %>
-  <div style='margin-left:30px;margin-bottom:20px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
+  <div style='margin-left:30px;margin-bottom:10px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
      <div><%= notice %>   </div>
   </div>
 <% end %>
@@ -41,7 +41,7 @@
       font-size:18px;
       margin-left:30px;
       width:90%;
-      height:400px;
+      height:300px;
       border-bottom-left-radius:10px;
       border-bottom-right-radius:10px;
       border-top-right-radius:10px;
@@ -50,13 +50,13 @@
       <br/>
 
       <div style='margin-left:27px;margin-top:20px'>
-          <%= f.text_area :description,  :rows => 5, :cols => 10 %>
+          <%= f.text_area :description,  :rows => 3, :cols => 10 %>
       </div>
       <p style='margin-left:30px; margin-top:-7px'><%=SystemText.where("key = ?",'GOAL_DESCRIPTION').first.value%></p><br>
 
 
       <div style='margin-left:27px;margin-top:20px'>
-        <%= f.text_area :note,  :rows => 5, :cols => 10 %>
+        <%= f.text_area :note,  :rows => 3, :cols => 10 %>
       </div>
       <p style='margin-left:30px; margin-top:-7px'><%=SystemText.where("key = ?",'GOAL_NOTE_DESCRIPTION').first.value%></p><br>
     
@@ -67,6 +67,6 @@
 
 
   <div style='margin-left:30px;margin-top:20px' class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Goal" %>
   </div>
 <% end %>

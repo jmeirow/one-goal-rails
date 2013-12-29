@@ -1,19 +1,26 @@
 <h1>Your ONE Goal Action Steps</h1>
 
-
 <% if notice %>
-  <div style='font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
+  <div style='margin-left:30px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
      <div><%= notice %>   </div>
   </div>
 <% end %>
 
 
-<table>
+<table style='
+      font-size:12px;
+      margin-left:30px;
+      width:90%;
+      border:2px solid;
+      border-color:#800000'>
+
   <thead>
+    <tr><td colspan=6 style='text-align:right'><%= link_to 'New Action Step', new_action_step_path %></td></tr>
+    <tr><td colspan=6 style='height:20px;font-size:14pt;background-color:maroon;color:white;text-align:center'>You have completed <%= Goal.percent_complete(User.find(session['user_id'].to_i)) %>% of the steps toward your goal.</td></tr>
     <tr>
       <th>Description</th>
-      <th>Target date</th>
-      <th>Completed</th>
+      <th>Target Date</th>
+      <th>Date Completed</th>
       <th></th>
       <th></th>
       <th></th>
@@ -36,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Action step', new_action_step_path %>
+<%= paginate @action_steps %>

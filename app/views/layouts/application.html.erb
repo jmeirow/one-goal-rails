@@ -39,28 +39,27 @@
 			<% else %>
 				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
 					<tr class='row'>
-						<td style='text-align:center;font-size:14pt'><a href='/home'>Home</a></td>
+						<td style='text-align:center;font-size:14pt'><a href='/login'>Home</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/about'>Tell Me More</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/signup'>Register</a></td>
 						<td style='text-align:center;font-size:14pt'><a href='/faq'>FAQ</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/login'>Log In</a></td>
 					</tr>
 				</table>
 
 			<% end %>
-
-
-
-
 		</div>
 
-<div style='margin-left:30px'>
+<div style='height:500px;margin-left:30px'>
 <%= yield %>
-
-<div style="width:100%; bottom: 0px; left: 0px; background-color: red; color: black">
-  <marquee direction="left" onmouseover="this.stop()" onmouseout="this.start()"><strong> Name : This is My Goal for 2014 </strong></marquee>
-  </div>
 </div>
+
+<% if secured_page? %>
+	<% @marquee_text ||= Goal.marquee_text %>
+	<div style="width:100%; bottom: 0px; left: 0px; height:20px; font-size:12pt;  background-color: maroon; color: white">
+	  <marquee scrollamount='2' scrolldelay='1' direction="left" onmouseover="this.stop()" onmouseout="this.start()"><%= @marquee_text %></marquee>
+	  </div>
+	</div>
+<% end %>
 
 </body>
 </html>

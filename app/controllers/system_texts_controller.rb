@@ -11,7 +11,7 @@ class SystemTextsController < ApplicationController
   # GET /system_texts
   # GET /system_texts.json
   def index
-    @system_texts = SystemText.all
+    @system_texts = SystemText.order(:key).page params[:page]
   end
 
   # GET /system_texts/1
@@ -35,7 +35,7 @@ class SystemTextsController < ApplicationController
 
     respond_to do |format|
       if @system_text.save
-        format.html { redirect_to @system_text, notice: 'System text was successfully created.' }
+        format.html { redirect_to system_texts_path, notice: 'System text was successfully created.' }
         format.json { render action: 'show', status: :created, location: @system_text }
       else
         format.html { render action: 'new' }
@@ -49,7 +49,7 @@ class SystemTextsController < ApplicationController
   def update
     respond_to do |format|
       if @system_text.update(system_text_params)
-        format.html { redirect_to @system_text, notice: 'System text was successfully updated.' }
+        format.html { redirect_to system_texts_path, notice: 'System text was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

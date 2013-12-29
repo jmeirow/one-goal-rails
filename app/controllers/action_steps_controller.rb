@@ -9,7 +9,7 @@ class ActionStepsController < ApplicationController
   # GET /action_steps
   # GET /action_steps.json
   def index
-    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id = ? ", session['user_id'].to_i).first.id)
+    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id = ? ", session['user_id'].to_i).first.id).page params[:page]
   end
 
   # GET /action_steps/1
