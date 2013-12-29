@@ -6,6 +6,29 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<%
+
+def menu_bg_color path 
+	if request.fullpath.start_with? path 
+		'maroon'
+	else
+		'white'
+	end
+end
+
+def menu_text_color path 
+	if request.fullpath.start_with? path 
+		'white'
+	else
+		'maroon'
+	end
+end
+
+
+%>
+
+
 <body>
 		<div id='header'>
 			<div style='width:100%'>
@@ -21,18 +44,22 @@
 							<tr class='row'><td colspan=5>Logged in as: <%= "#{member.first_name} #{member.last_name}" %></td></tr>
 						<% end %>
 						<tr class='row'>
-							<td style='text-align:center;font-size:14pt'><a href='/goals/new'>My ONE Goal</a></td>
-							<td style='text-align:center;font-size:14pt'><a href='/action_steps'>Action Steps</a></td>
-							<td style='text-align:center;font-size:14pt'><a href='/resources'>Resources</a></td>
-							<td style='text-align:center;font-size:14pt'><%= link_to 'Member Info', edit_member_path(member) %></td>
+							<td style='background-color:<%=menu_bg_color('/goals/new') %>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/goals/new')%>' 		href='/goals/new'>My ONE Goal</a></td>
+							<td style='background-color:<%=menu_bg_color('/action_steps')%>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/action_steps')%>'; 	href='/action_steps'>Action Steps</a></td>
+							<td style='background-color:<%=menu_bg_color('/resources')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/resources')%>'	   	href='/resources'>Resources</a></td>
 
-							<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %>
-
-							<% if user_is_admin %>
-								<td style='text-align:center;font-size:14pt'><a href='/system_texts'>System Text</a></td>
+							<% if Member.where("user_id = ? ", session['user_id'] ).count == 1 %>
+								<td style='background-color:<%=menu_bg_color('/member')%>;text-align:center;font-size:14pt'> 	<a style=';color:<%=menu_text_color('/member')%>'	 href='/members/<%=member.id%>/edit'>Member Info</a></td>
 							<% end %>
 
-							<td style='text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
+
+							<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %> 
+
+							<% if user_is_admin %>
+								<td style='background-color:<%=menu_bg_color('/system_texts')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/system_texts')%>'   href='/system_texts'>System Text</a></td>
+							<% end %>
+
+							<td style='background-color:<%=menu_bg_color('/logout')%>;color:<%=menu_text_color('/logout')%>;text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
 						</tr>
 					</table>
 				</div>
@@ -40,10 +67,10 @@
 			<% else %>
 				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
 					<tr class='row'>
-						<td style='text-align:center;font-size:14pt'><a href='/login'>Home</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/about'>Tell Me More</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/signup'>Register</a></td>
-						<td style='text-align:center;font-size:14pt'><a href='/faq'>FAQ</a></td>
+						<td style='background-color:<%=menu_bg_color('/login')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/login')%>'   href='/login'>Home</a></td>
+						<td style='background-color:<%=menu_bg_color('/about')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/about')%>'   href='/about'>Tell Me More</a></td>
+						<td style='background-color:<%=menu_bg_color('/signup')%>;text-align:center;font-size:14pt'>	<a style=';color:<%=menu_text_color('/signup')%>'  href='/signup'>Register</a></td>
+						<td style='background-color:<%=menu_bg_color('/faq')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/faq')%>'     href='/faq'>FAQ</a></td>
 					</tr>
 				</table>
 

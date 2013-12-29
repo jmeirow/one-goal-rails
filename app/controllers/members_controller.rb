@@ -22,6 +22,8 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    @member = Member.where("user_id = ?", session[:user_id].to_i).first
+    @member = Member.new if @member.nil? 
   end
 
   # POST /members
@@ -49,7 +51,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to new_member_path, notice: 'Member was successfully updated.' }
+        format.html { redirect_to edit_member_path, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

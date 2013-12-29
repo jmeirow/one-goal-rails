@@ -6,10 +6,27 @@ class ActionStepsController < ApplicationController
 
   before_action :set_action_step, only: [:show, :edit, :update, :destroy]
 
+  before_filter :check_for_member
+
+
+
+
+
+  def check_for_member
+    if Member.where("user_id = ? ", session['user_id']).count == 0
+      redirect_to new_member_path, :notice => SystemText.text_for_key('MEMBER_INFO_REQUIRED_BEFORE_GOAL')
+    end
+    if Member.where("user_id = ? ", session['user_id']).count == 1 && Goal.where("user_id = ? ", session['user_id']).count == 0
+      redirect_to new_goal_path, :notice =>  SystemText.text_for_key('GOAL_INFO_REQUIRED_BEFORE_ACTION_STEPS')
+    end
+  end
+
+
+
   # GET /action_steps
   # GET /action_steps.json
   def index
-    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id = ? ", session['user_id'].to_i).first.id).page params[:page]
+    @action_steps = ActionStep.where("goal_id = ?", Goal.where("user_id = ? ", session['user_id'].to_i).first.id).order("target_date ASC").page params[:page]
   end
 
   # GET /action_steps/1

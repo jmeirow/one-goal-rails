@@ -76,7 +76,7 @@ class SystemTextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def system_text_params
-      params.require(:system_text).permit(:key, :value)
+      params.require(:system_text).permit(:key, :value, :description)
     end
 
 

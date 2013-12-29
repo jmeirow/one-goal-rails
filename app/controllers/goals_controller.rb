@@ -2,8 +2,18 @@ class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
 
-  
+  before_filter :check_for_member
 
+
+
+
+  def check_for_member
+    if Member.where("user_id = ? ", session['user_id']).count == 0
+      redirect_to new_member_path, :notice => SystemText.text_for_key('MEMBER_INFO_REQUIRED_BEFORE_GOAL')
+    end
+  end
+
+  
   # GET /goals
   # GET /goals.json
   def index

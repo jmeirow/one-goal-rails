@@ -14,10 +14,12 @@
       border:2px solid;
       border-color:#800000'>
   <thead>
-      <tr><td colspan=5   style='text-align:right;'><%= link_to 'New System Text Entry', new_system_text_path %></td></tr>
+      <tr><td colspan=6   style='text-align:right;'><%= link_to 'New System Text Entry', new_system_text_path %></td></tr>
     <tr>
       <th>Key</th>
       <th>Value</th>
+      <th>Description</th>
+
       <th></th>
       <th></th>
       <th></th>
@@ -28,8 +30,9 @@
   <tbody>
     <% @system_texts.each do |system_text| %>
       <tr>
-        <td><%= system_text.key %></td>
-        <td><%= "#{system_text.value.slice(0,100)}..." %></td>
+        <td><%= (system_text.key.length > 30) ? "#{system_text.key.slice(0,30)}..." : system_text.key %></td>
+        <td><%= "#{system_text.value.slice(0,30)}..." %></td>
+        <td><%= "#{system_text.description.slice(0,30)}..." %></td>
         <td><%= link_to 'Show', system_text %></td>
         <td><%= link_to 'Edit', edit_system_text_path(system_text) %></td>
         <td><%= link_to 'Delete', system_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>

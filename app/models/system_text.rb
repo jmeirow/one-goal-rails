@@ -1,7 +1,9 @@
 class SystemText < ActiveRecord::Base
 
-  paginates_per 5
+  paginates_per 10
 
+
+  validates_presence_of :key, :value, :description
 
   def self.text_for_key key 
     result  = SystemText.where("key = ?",key).first 
