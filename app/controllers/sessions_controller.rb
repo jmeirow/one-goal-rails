@@ -54,7 +54,7 @@ class SessionsController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to home_url, :notice => "You have been logged out."
+    redirect_to login_path, :notice => "You have been logged out."
   end
 
   def self.get_next_step user 
