@@ -48,7 +48,7 @@
               </tr>
               <tr class='tr'>
                 <td width=400px style='font-size:12pt'>
-                  <% buddy_text = raw SystemText.where("key = ?", 'BUDDY_TOOLTIP').first.value %>
+                  <% buddy_text = raw SystemText.text_for_key('BUDDY_TOOLTIP') %>
                   Want a buddy? More about buddies...<%= link_to '(hover here)', '#', title:  buddy_text , rel: 'tooltip' %>
                 </td> 
                 <td>

@@ -7,6 +7,6 @@
 <div style='margin-left:30px;width:90%;font-size:12pt'>
 
 
- 	<%=raw SystemText.where("key = ?",'HOME_PAGE').first.value%>
+ 	<%=raw SystemText.text_for_key('HOME_PAGE') %>
 			
 </div>

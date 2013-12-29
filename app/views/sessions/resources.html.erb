@@ -1,6 +1,6 @@
 <div style='margin-left:30px;width:90%;font-size:12pt'>
 	
-	<%=raw SystemText.where("key = ?", 'RESOURCES').first.value %>
+	<%=raw SystemText.text_for_key('RESOURCES') %>
 
 
 </div>

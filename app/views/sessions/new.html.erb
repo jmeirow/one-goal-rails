@@ -11,7 +11,7 @@
 
 <table style='background-color:#f9f9f9'>
   <tr class='row'>
-    <td class='row'><%=raw SystemText.where("key = ?",'HOME_PAGE').first.value%></td>
+    <td class='row'><%=raw SystemText.text_for_key('HOME_PAGE') %></td>
     <td>
 
       <%= form_tag sessions_path do %>
