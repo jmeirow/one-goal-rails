@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   private
 
   def secured_page?
-    ['/login', '/about', '/signup', '/home', '/sessions' , '/users' ].include?(request.fullpath.strip) == false
+    ['/login', '/about', '/signup', '/home', '/sessions' , '/users', '/faq' ].include?(request.fullpath.strip) == false
   end
 
   def authenticate

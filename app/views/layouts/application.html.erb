@@ -24,6 +24,7 @@
 							<td style='text-align:center;font-size:14pt'><a href='/goals/new'>My ONE Goal</a></td>
 							<td style='text-align:center;font-size:14pt'><a href='/action_steps'>Action Steps</a></td>
 							<td style='text-align:center;font-size:14pt'><a href='/resources'>Resources</a></td>
+							<td style='text-align:center;font-size:14pt'><%= link_to 'Member Info', edit_member_path(member) %></td>
 
 							<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %>
 
@@ -49,7 +50,7 @@
 			<% end %>
 		</div>
 
-<div style='height:500px;margin-left:30px'>
+<div style='height:550px;margin-left:30px'>
 <%= yield %>
 </div>
 

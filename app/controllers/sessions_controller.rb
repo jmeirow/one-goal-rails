@@ -14,6 +14,9 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def faq
+  end
+
   def create
     user = User.authenticate(params[:login], params[:password])
     if user

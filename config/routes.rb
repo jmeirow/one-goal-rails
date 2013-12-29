@@ -17,6 +17,7 @@ OneGoal::Application.routes.draw do
   get 'complete_action_step/:id' => 'action_steps#complete_action_step', :as => :complete_action_step
 
   get 'resources' => 'sessions#resources', :as => :resources
+  get 'faq' => 'sessions#faq', :as => :faq
 
 
   resources :sessions
@@ -26,7 +27,7 @@ OneGoal::Application.routes.draw do
   resources :members 
   resources :system_texts
 
-  root 'sessions#about'
+  root 'sessions#login'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

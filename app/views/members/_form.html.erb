@@ -1,3 +1,10 @@
+<% if notice %>
+  <div style='margin-left:23px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
+     <div><%= notice %>   </div>
+  </div>
+<% end %>
+
+
 <%= form_for(@member) do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
@@ -11,22 +18,18 @@
     </div>
   <% end %>
 
- 
-
-<%
-
-buddy_text = 'The ONE Goal program uses "buddies" to provide encouragement and accountability. Would you like us to match you with a buddy or would you like to use your existing mentor or another Toastmaster you already know? (If we match you with a buddy, you will receive an email with their contact information.)'
-
-
-%>
-
   <div>
 
 
     <div style=''>
       <div style='width:80%;margin-left:20px;font-size:12pt'>
         <div style='width:35%;font-size:12pt' >
-          <table  >
+         <table style='
+      font-size:12px;
+      margin-left:30px;
+      width:90%;
+      border:2px solid;
+      border-color:#800000'>
             <tr class='tr'>
               <td width=400px style='font-size:12pt'><label>First Name</label></td>
               <td> <%=f.text_field :first_name  %></td>
@@ -45,7 +48,8 @@ buddy_text = 'The ONE Goal program uses "buddies" to provide encouragement and a
               </tr>
               <tr class='tr'>
                 <td width=400px style='font-size:12pt'>
-                  Want a buddy? More about buddies...<%= link_to '(hover here)', '#', title: buddy_text, rel: 'tooltip' %>
+                  <% buddy_text = raw SystemText.where("key = ?", 'BUDDY_TOOLTIP').first.value %>
+                  Want a buddy? More about buddies...<%= link_to '(hover here)', '#', title:  buddy_text , rel: 'tooltip' %>
                 </td> 
                 <td>
                   <table>

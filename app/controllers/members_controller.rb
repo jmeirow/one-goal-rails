@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    #@members = Member.all
   end
 
   # GET /members/1
@@ -16,7 +16,8 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    @member = Member.where("user_id = ?", session[:user_id].to_i).first
+    @member = Member.new if @member.nil? 
   end
 
   # GET /members/1/edit
@@ -34,7 +35,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to new_goal_path, notice: 'Member info successfully saved. Time to enter goal information.' }
+        format.html { redirect_to new_goal_path, notice: 'Time to enter goal information.' }
         format.json { render action: 'show', status: :created, location: @member }
       else
         format.html { render action: 'new' }
@@ -48,7 +49,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to new_member_path, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
