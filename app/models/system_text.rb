@@ -1,6 +1,6 @@
 class SystemText < ActiveRecord::Base
 
-  paginates_per 10
+  paginates_per 8
 
 
   validates_presence_of :key, :value, :description

@@ -12,6 +12,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'pry_debug'
+  gem 'faker'
 end
 
 group :production do

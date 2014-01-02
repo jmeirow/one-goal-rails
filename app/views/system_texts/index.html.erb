@@ -18,8 +18,7 @@
     <tr>
       <th>Key</th>
       <th>Value</th>
-      <th>Description</th>
-
+      <th>Last Modified</th>
       <th></th>
       <th></th>
       <th></th>
@@ -31,8 +30,8 @@
     <% @system_texts.each do |system_text| %>
       <tr>
         <td><%= (system_text.key.length > 30) ? "#{system_text.key.slice(0,30)}..." : system_text.key %></td>
-        <td><%= "#{system_text.value.slice(0,30)}..." %></td>
-        <td><%= "#{system_text.description.slice(0,30)}..." %></td>
+        <td><%= "#{system_text.value.slice(0,50)}..." %></td>
+        <td><%= system_text.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p") %></td>
         <td><%= link_to 'Show', system_text %></td>
         <td><%= link_to 'Edit', edit_system_text_path(system_text) %></td>
         <td><%= link_to 'Delete', system_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
