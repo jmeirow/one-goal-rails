@@ -2,4 +2,4 @@
 
 
 
-require_relative './seed_buddies_test.rb'
+require_relative './seed_texts.rb'
