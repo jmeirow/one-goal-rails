@@ -25,4 +25,14 @@ class SystemText < ActiveRecord::Base
       result.value
     end
   end
+
+  def to_h
+    {
+      :id => id,
+      :description => description,
+      :key => key,
+      :value => value
+    }
+  end
+
 end

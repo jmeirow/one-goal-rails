@@ -39,8 +39,8 @@
 
 
     <div style=''>
-      <div style='width:80%;margin-left:20px;font-size:12pt'>
-        <div style='width:70%;font-size:12pt' >
+      <div style='width:90%;margin-left:20px;font-size:12pt'>
+        <div style='width:100%;font-size:12pt' >
          <table style='
       font-size:12px;
       ;
@@ -48,39 +48,33 @@
       border:2px solid;
       border-color:#800000'>
             <tr class='tr'>
-              <td width=400px style='font-size:12pt'><label>First Name</label></td>
+              <td   style='font-size:12pt'><label>First Name</label></td>
               <td> <%=f.text_field :first_name  %></td>
-            </tr>
-            <tr class='tr'>
-                <td width=400px style='font-size:12pt'><label>Last Name</label></td>
+                <td  style='font-size:12pt'><label>Last Name</label></td>
                 <td>  <%= f.text_field :last_name %></td>
             </tr>
             <tr class='tr'>
-              <td width=400px style='font-size:12pt'><label>Phone Number</label></td>
+              <td   style='font-size:12pt'><label>Phone Number</label></td>
               <td><%= f.text_field :phone_number %></td>
-            </tr>
-
-            <tr class='tr'>
-              <td width=400px style='font-size:12pt'><label>Display Name</label></td>
+              <td   style='font-size:12pt'><label>Display Name</label></td>
               <td><%= f.text_field :display_name %> <a href='javascript:display_name_help();'   >What's this?</a></td>
             </tr>
 
+
             <tr class='tr'>
-              <td width=400px style='font-size:12pt'><label>Club Name</label></td>
-              <td>   <%= f.select :club_name,  Club.all.collect { |c| [c.name, c.name] } ,  { include_blank: true } , :selected => @member.club_name  %> </td>
-              </tr>
-              <tr class='tr'>
-                <td width=400px style='font-size:12pt'>
-                  <label><%=SystemText.text_for_key('BUDDY_LABEL_TEXT')%></label>                 
-                </td> 
-                <td>
+              <td    style='font-size:12pt'><label>Club Name</label></td>
+              <td   >   <%= f.select :club_name,  Club.all.collect { |c| [c.name, c.name] } ,  { include_blank: true } , :selected => @member.club_name  %> </td>
+              <td     style='font-size:12pt'> <label><%=SystemText.text_for_key('BUDDY_LABEL_TEXT')%></label> </td>
+              <td>
                   <table>
-                    <tr class='tr'><td><%= f.radio_button :wants_a_buddy, "y",  checked: false , :checked => (@member.wants_a_buddy == 'y') %><label>Yes, match me with a buddy.</label></td></tr>
-                    <tr class='tr'><td><%= f.radio_button :wants_a_buddy, "n", checked: false, :checked =>  (@member.wants_a_buddy == 'n')   %><label>No, I will use my own buddy.</label></td></tr> 
+                    <tr class='tr'>
+                      <td><%= f.radio_button :wants_a_buddy, "y",  checked: false , :checked => (@member.wants_a_buddy == 'y') %><label>Yes, match me with a buddy.</label></td> 
+                      <td><%= f.radio_button :wants_a_buddy, "n", checked: false, :checked =>  (@member.wants_a_buddy == 'n')   %><label>No, I will use my own buddy.</label></td> 
+                    </tr>
                   </table>
                    <a href='javascript:buddy_help();'>What's this?</a>
                 </td>
-              </tr>
+            </tr>
           </table>
         </div>
       </div>
