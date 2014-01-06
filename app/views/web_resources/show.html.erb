@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @web_resource.url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @web_resource.description %>
+</p>
+
+<p>
+  <strong>Recommending member:</strong>
+  <%= @web_resource.recommending_member %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @web_resource.status %>
+</p>
+
+<p>
+  <strong>Declined reason:</strong>
+  <%= @web_resource.declined_reason %>
+</p>
+
+<%= link_to 'Edit', edit_web_resource_path(@web_resource) %> |
+<%= link_to 'Back', web_resources_path %>

@@ -9,16 +9,21 @@
 
 <%
 
-def menu_bg_color path 
-	if request.fullpath.start_with? path 
+def selected?(paths)
+	paths.collect{|x| request.fullpath.start_with? x}.include?(true)
+end
+
+
+def menu_bg_color *args
+	if selected?(args)
 		'maroon'
 	else
 		'white'
 	end
 end
 
-def menu_text_color path 
-	if request.fullpath.start_with? path 
+def menu_text_color *args
+	if selected?(args)
 		'white'
 	else
 		'maroon'
@@ -30,12 +35,8 @@ end
 
 
 <body>
-		<div id='header'>
-			<div style='width:100%'>
-				<%= image_tag("tm-logo.jpg")    %>  
-			</div>
-			
-
+		
+	<%= render 'layouts/header' %>
 			<% if session.keys.include? 'user_id' %>
 				<% member = Member.where("user_id = ?",session['user_id'].to_i).first  %>
 				<div class='container'  style='width:100%'>
@@ -46,7 +47,7 @@ end
 						<tr class='row'>
 							<td style='background-color:<%=menu_bg_color('/goals/new') %>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/goals/new')%>' 		href='/goals/new'>My ONE Goal</a></td>
 							<td style='background-color:<%=menu_bg_color('/action_steps')%>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/action_steps')%>'; 	href='/action_steps'>Action Steps</a></td>
-							<td style='background-color:<%=menu_bg_color('/resources')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/resources')%>'	   	href='/resources'>Resources</a></td>
+							<td style='background-color:<%=menu_bg_color('/web_resources')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/web_resources')%>'	   	href='/web_resources'>Resources</a></td>
 
 							<% if Member.where("user_id = ? ", session['user_id'] ).count == 1 %>
 								<td style='background-color:<%=menu_bg_color('/member')%>;text-align:center;font-size:14pt'> 	<a style=';color:<%=menu_text_color('/member')%>'	 href='/members/<%=member.id%>/edit'>Member Info</a></td>
@@ -57,6 +58,7 @@ end
 
 							<% if user_is_admin %>
 								<td style='background-color:<%=menu_bg_color('/system_texts')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/system_texts')%>'   href='/system_texts'>System Text</a></td>
+								<td style='background-color:<%=menu_bg_color('/pending', '/review')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/pending', '/review')%>'   href='/pending'>Pending Resources</a></td>
 							<% end %>
 
 							<td style='background-color:<%=menu_bg_color('/logout')%>;color:<%=menu_text_color('/logout')%>;text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
@@ -76,17 +78,33 @@ end
 			<% end %>
 		</div>
 
+
 <div style='height:550px;margin-left:30px'>
 <%= yield %>
 </div>
 
-<% if secured_page? %>
-	<% @marquee_text ||= Goal.marquee_text %>
-	<div style="width:100%; bottom: 0px; left: 0px; height:20px; font-size:12pt;  background-color: maroon; color: white">
-	  <marquee scrollamount='2' scrolldelay='1' direction="left" onmouseover="this.stop()" onmouseout="this.start()"><%= @marquee_text %></marquee>
-	  </div>
-	</div>
-<% end %>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

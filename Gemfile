@@ -12,7 +12,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'pry_debug'
+  gem 'pry-stack_explorer'
+
   gem 'faker'
+  gem 'annotate'
 end
 
 group :production do
@@ -57,7 +60,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# gem 'capistrtrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

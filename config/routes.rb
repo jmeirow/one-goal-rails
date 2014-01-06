@@ -1,3 +1,77 @@
+# == Route Map (Updated 2014-01-05 18:59)
+#
+#               Prefix Verb   URI Pattern                         Controller#Action
+#    edit_current_user GET    /user/edit(.:format)                users#edit
+#               signup GET    /signup(.:format)                   users#new
+#                login GET    /login(.:format)                    sessions#new
+#               logout GET    /logout(.:format)                   sessions#logout
+#                 home GET    /home(.:format)                     sessions#home
+#                about GET    /about(.:format)                    sessions#about
+#  determine_next_step GET    /determine_next_step(.:format)      sessions#determine_next_step
+#  unauthorized_access GET    /unauthorized_access(.:format)      sessions#unauthorized_access
+# complete_action_step GET    /complete_action_step/:id(.:format) action_steps#complete_action_step
+#              pending GET    /pending(.:format)                  web_resources#pending
+#               review GET    /review(.:format)                   web_resources#review/:id
+#                  faq GET    /faq(.:format)                      sessions#faq
+#             sessions GET    /sessions(.:format)                 sessions#index
+#                      POST   /sessions(.:format)                 sessions#create
+#          new_session GET    /sessions/new(.:format)             sessions#new
+#         edit_session GET    /sessions/:id/edit(.:format)        sessions#edit
+#              session GET    /sessions/:id(.:format)             sessions#show
+#                      PATCH  /sessions/:id(.:format)             sessions#update
+#                      PUT    /sessions/:id(.:format)             sessions#update
+#                      DELETE /sessions/:id(.:format)             sessions#destroy
+#                users GET    /users(.:format)                    users#index
+#                      POST   /users(.:format)                    users#create
+#             new_user GET    /users/new(.:format)                users#new
+#            edit_user GET    /users/:id/edit(.:format)           users#edit
+#                 user GET    /users/:id(.:format)                users#show
+#                      PATCH  /users/:id(.:format)                users#update
+#                      PUT    /users/:id(.:format)                users#update
+#                      DELETE /users/:id(.:format)                users#destroy
+#                goals GET    /goals(.:format)                    goals#index
+#                      POST   /goals(.:format)                    goals#create
+#             new_goal GET    /goals/new(.:format)                goals#new
+#            edit_goal GET    /goals/:id/edit(.:format)           goals#edit
+#                 goal GET    /goals/:id(.:format)                goals#show
+#                      PATCH  /goals/:id(.:format)                goals#update
+#                      PUT    /goals/:id(.:format)                goals#update
+#                      DELETE /goals/:id(.:format)                goals#destroy
+#         action_steps GET    /action_steps(.:format)             action_steps#index
+#                      POST   /action_steps(.:format)             action_steps#create
+#      new_action_step GET    /action_steps/new(.:format)         action_steps#new
+#     edit_action_step GET    /action_steps/:id/edit(.:format)    action_steps#edit
+#          action_step GET    /action_steps/:id(.:format)         action_steps#show
+#                      PATCH  /action_steps/:id(.:format)         action_steps#update
+#                      PUT    /action_steps/:id(.:format)         action_steps#update
+#                      DELETE /action_steps/:id(.:format)         action_steps#destroy
+#              members GET    /members(.:format)                  members#index
+#                      POST   /members(.:format)                  members#create
+#           new_member GET    /members/new(.:format)              members#new
+#          edit_member GET    /members/:id/edit(.:format)         members#edit
+#               member GET    /members/:id(.:format)              members#show
+#                      PATCH  /members/:id(.:format)              members#update
+#                      PUT    /members/:id(.:format)              members#update
+#                      DELETE /members/:id(.:format)              members#destroy
+#         system_texts GET    /system_texts(.:format)             system_texts#index
+#                      POST   /system_texts(.:format)             system_texts#create
+#      new_system_text GET    /system_texts/new(.:format)         system_texts#new
+#     edit_system_text GET    /system_texts/:id/edit(.:format)    system_texts#edit
+#          system_text GET    /system_texts/:id(.:format)         system_texts#show
+#                      PATCH  /system_texts/:id(.:format)         system_texts#update
+#                      PUT    /system_texts/:id(.:format)         system_texts#update
+#                      DELETE /system_texts/:id(.:format)         system_texts#destroy
+#        web_resources GET    /web_resources(.:format)            web_resources#index
+#                      POST   /web_resources(.:format)            web_resources#create
+#     new_web_resource GET    /web_resources/new(.:format)        web_resources#new
+#    edit_web_resource GET    /web_resources/:id/edit(.:format)   web_resources#edit
+#         web_resource GET    /web_resources/:id(.:format)        web_resources#show
+#                      PATCH  /web_resources/:id(.:format)        web_resources#update
+#                      PUT    /web_resources/:id(.:format)        web_resources#update
+#                      DELETE /web_resources/:id(.:format)        web_resources#destroy
+#                 root GET    /                                   sessions#new
+#
+
 OneGoal::Application.routes.draw do
   
 
@@ -21,9 +95,13 @@ OneGoal::Application.routes.draw do
 
   get 'complete_action_step/:id' => 'action_steps#complete_action_step', :as => :complete_action_step
 
-  get 'resources' => 'sessions#resources', :as => :resources
+  get 'pending' => 'web_resources#pending', :as => :pending
+
+  get 'review/:id' => 'web_resources#review', :as => :review
 
   get 'faq' => 'sessions#faq', :as => :faq
+
+
 
 
   resources :sessions
@@ -32,6 +110,7 @@ OneGoal::Application.routes.draw do
   resources :action_steps
   resources :members 
   resources :system_texts
+  resources :web_resources
 
   root 'sessions#new'
 

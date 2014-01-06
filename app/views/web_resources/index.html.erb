@@ -1,0 +1,27 @@
+<h1>ONE Goal Web Resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @web_resources.each do |web_resource| %>
+      <tr>
+        <td><a href='<%= web_resource.url %>' target='_blank'>View</a></td>
+        <td><%= web_resource.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Suggest a Web Resource', new_web_resource_path %>
+
+<br/>
+
+<%= paginate @web_resources %>

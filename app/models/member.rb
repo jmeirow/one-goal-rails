@@ -1,12 +1,26 @@
-
+# == Schema Information
+#
+# Table name: members
+#
+#  id            :integer          not null, primary key
+#  first_name    :string(255)
+#  last_name     :string(255)
+#  phone_number  :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  wants_a_buddy :string(255)
+#  club_name     :string(255)
+#  user_id       :integer
+#  display_name  :string(255)
+#
 
 class Member < ActiveRecord::Base
 
-    #after_create :send_welcome_email
+    after_create :send_welcome_email, :do_buddy_assignment
 
     after_update :check_for_updated_buddy_request
 
-    validates_presence_of :first_name, :last_name, :phone_number, :club_name 
+    validates_presence_of :first_name, :last_name, :phone_number, :club_name, :display_name 
 
     validate :buddy_selection 
 
@@ -60,8 +74,6 @@ class Member < ActiveRecord::Base
     end
 
 
-
-
     def do_buddy_assignment
 
 
@@ -84,7 +96,6 @@ class Member < ActiveRecord::Base
       mbr2 = Member.find(buddy.member_id_2)
       send_buddy_assigned_email mbr1 
       send_buddy_assigned_email mbr2 
-
     end
 
 
@@ -107,7 +118,6 @@ class Member < ActiveRecord::Base
       if self.wants_a_buddy_changed? && wants_a_buddy == 'y' && Buddy.where("member_id_1 = ?", id).count == 0 && Buddy.where("member_id_2 = ?", id).count == 0
         do_buddy_assignment
       end
-
     end 
 
     #
@@ -181,8 +191,5 @@ class Member < ActiveRecord::Base
       @user ||= User.find(self.user_id)
       @user.username 
     end
-
-
-
 
 end

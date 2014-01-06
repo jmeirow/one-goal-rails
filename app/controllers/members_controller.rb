@@ -23,7 +23,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
     @member = Member.where("user_id = ?", session[:user_id].to_i).first
-    @member = Member.new if @member.nil? 
+    #@member = Member.new if @member.nil? 
   end
 
   # POST /members
@@ -73,11 +73,11 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
-      @member = Member.where("user_id  = ?", session['user_id'])
+      @member = Member.where("user_id  = ?", session['user_id']).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :phone_number, :wants_a_buddy, :club_name)
+      params.require(:member).permit(:first_name, :last_name, :phone_number, :wants_a_buddy, :club_name, :display_name)
     end
 end

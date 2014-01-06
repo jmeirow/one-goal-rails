@@ -1,0 +1,44 @@
+<%= form_for(@web_resource) do |f| %>
+  <% if @web_resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@web_resource.errors.count, "error") %> prohibited this web_resource from being saved:</h2>
+
+      <ul>
+      <% @web_resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Web Address (URL)</label><br>
+    <%= f.text_field :url, :size => 100 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description , :rows => 3   %>
+  </div>
+
+  <% if @user_is_admin %>
+    <div class="field">
+    <%=f.radio_button :status,  WebResource.pending  %>
+    <%=f.label WebResource.pending.to_sym , WebResource.pending.capitalize   %>
+    <%=f.radio_button :status,  WebResource.approved  %>
+    <%=f.label WebResource.approved.to_sym, WebResource.approved.capitalize   %>
+    <%=f.radio_button :status, WebResource.declined   %>
+    <%=f.label WebResource.declined.to_sym, WebResource.declined.capitalize   %>
+    </div>
+
+    <div class="field">
+      <%= f.label :declined_reason %><br>
+      <%= f.text_field :declined_reason, :size => 100 %>
+    </div>
+
+
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit  "Submit Web Resource" %>
+  </div>
+<% end %>

@@ -17,7 +17,7 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = []
   end
 
   # GET /goals/1

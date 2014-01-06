@@ -1,0 +1,28 @@
+<h1>Pending Web Resource Submissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Description</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pending_resources.each do |web_resource| %>
+      <tr>
+        <td><a href='<%= web_resource.url %>' target='_blank'>View</a></td>
+        <td><%= web_resource.description %></td>
+        <td><%= link_to "Review", review_path(web_resource) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<br/>
+
+<%= paginate @pending_resources %>

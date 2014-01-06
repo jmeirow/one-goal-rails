@@ -1,3 +1,20 @@
+
+
+
+
+<script language='javascript'>
+
+  function display_name_help() {
+    alert("<%=raw SystemText.text_for_key('DISPLAY_NAME_HELP_TEXT')%>");
+  }
+
+  function buddy_help() {
+    alert("<%=raw SystemText.text_for_key('BUDDY_HELP_TEXT')%>");
+  }
+
+
+</script>
+
 <% if notice %>
   <div style='margin-left:23px;font-size:12pt;height:25px;border-radius:3px;width:400px;background-color:green;color:white;text-align:center;' id="notice">
      <div><%= notice %>   </div>
@@ -23,7 +40,7 @@
 
     <div style=''>
       <div style='width:80%;margin-left:20px;font-size:12pt'>
-        <div style='width:35%;font-size:12pt' >
+        <div style='width:70%;font-size:12pt' >
          <table style='
       font-size:12px;
       ;
@@ -42,20 +59,26 @@
               <td width=400px style='font-size:12pt'><label>Phone Number</label></td>
               <td><%= f.text_field :phone_number %></td>
             </tr>
+
+            <tr class='tr'>
+              <td width=400px style='font-size:12pt'><label>Display Name</label></td>
+              <td><%= f.text_field :display_name %> <a href='javascript:display_name_help();'   >What's this?</a></td>
+            </tr>
+
             <tr class='tr'>
               <td width=400px style='font-size:12pt'><label>Club Name</label></td>
               <td>   <%= f.select :club_name,  Club.all.collect { |c| [c.name, c.name] } ,  { include_blank: true } , :selected => @member.club_name  %> </td>
               </tr>
               <tr class='tr'>
                 <td width=400px style='font-size:12pt'>
-                  <% buddy_text = raw SystemText.text_for_key('BUDDY_TOOLTIP') %>
-                  Want a buddy? More about buddies...<%= link_to '(hover here)', '#', title:  buddy_text , rel: 'tooltip' %>
+                  <label><%=SystemText.text_for_key('BUDDY_LABEL_TEXT')%></label>                 
                 </td> 
                 <td>
                   <table>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "y",  checked: false , :checked => (@member.wants_a_buddy == 'y') %><label>Yes, match me with a buddy.</label></td></tr>
-                    <tr><td><%= f.radio_button :wants_a_buddy, "n", checked: false, :checked =>  (@member.wants_a_buddy == 'n')   %><label>No, I will use my own buddy.</label></td></tr> 
+                    <tr class='tr'><td><%= f.radio_button :wants_a_buddy, "y",  checked: false , :checked => (@member.wants_a_buddy == 'y') %><label>Yes, match me with a buddy.</label></td></tr>
+                    <tr class='tr'><td><%= f.radio_button :wants_a_buddy, "n", checked: false, :checked =>  (@member.wants_a_buddy == 'n')   %><label>No, I will use my own buddy.</label></td></tr> 
                   </table>
+                   <a href='javascript:buddy_help();'>What's this?</a>
                 </td>
               </tr>
           </table>

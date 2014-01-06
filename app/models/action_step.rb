@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: action_steps
+#
+#  id          :integer          not null, primary key
+#  description :string(255)
+#  target_date :date
+#  completed   :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#  goal_id     :integer
+#
+
 require 'pp'
 
 class ActionStep < ActiveRecord::Base

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: system_texts
+#
+#  id          :integer          not null, primary key
+#  key         :string(255)
+#  value       :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :text
+#
+
 class SystemText < ActiveRecord::Base
 
   paginates_per 8

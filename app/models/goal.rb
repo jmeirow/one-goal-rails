@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: goals
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  note        :text
+#
+
 class Goal < ActiveRecord::Base
 
 
@@ -37,7 +49,7 @@ class Goal < ActiveRecord::Base
       x[:goal] = goal.description
       user = User.find(goal.user_id)
       member = Member.where("user_id = ?", user.id).first
-      marquee_goals << "#{member.first_name} #{member.last_name}: '#{goal.description}' #{Goal.percent_complete(user)}% complete." 
+      marquee_goals << "#{member.display_name} : '#{goal.description}' #{Goal.percent_complete(user)}% complete." 
     end 
 
     marquee_goals.join("....    ")

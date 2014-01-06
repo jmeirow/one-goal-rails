@@ -26,9 +26,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     american_date (1.1.0)
+    annotate (2.6.1)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -38,6 +43,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.0.2)
     faker (1.2.0)
@@ -71,6 +77,9 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-stack_explorer (0.4.9.1)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     pry_debug (0.1.0)
       pry (~> 0.9.0)
     rack (1.5.2)
@@ -130,6 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   american_date
+  annotate
   bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
   faker
@@ -140,6 +150,7 @@ DEPENDENCIES
   nifty-generators
   pg
   pry
+  pry-stack_explorer
   pry_debug
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

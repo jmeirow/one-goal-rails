@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231130513) do
+ActiveRecord::Schema.define(version: 20140106022631) do
 
   create_table "action_steps", force: true do |t|
     t.string   "description"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131231130513) do
     t.string   "wants_a_buddy"
     t.string   "club_name"
     t.integer  "user_id"
+    t.string   "display_name"
   end
 
   create_table "system_texts", force: true do |t|
@@ -82,6 +83,16 @@ ActiveRecord::Schema.define(version: 20131231130513) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "web_resources", force: true do |t|
+    t.string   "url"
+    t.string   "description"
+    t.integer  "recommending_member_id", limit: 255
+    t.string   "status"
+    t.string   "declined_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
