@@ -24,10 +24,7 @@ records.each do |record|
   x.created_at = record[:created_at]
   x.updated_at = record[:updated_at]
   x.description = record[:description]
-  puts "HERE IS AN OBJECT"
-
-  pp x
-  #x.save
+  x.save
 end
 
 
