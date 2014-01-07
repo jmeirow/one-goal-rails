@@ -15,8 +15,10 @@
       border-color:#800000'>
 
   <thead>
-    <tr><td colspan=6 style='text-align:right'><%= link_to 'New Action Step', new_action_step_path %></td></tr>
     <tr><td colspan=6 style='height:20px;font-size:14pt;background-color:maroon;color:white;text-align:center'>You have completed <%= Goal.percent_complete(User.find(session['user_id'].to_i)) %>% of the steps toward your goal.</td></tr>
+    <tr><td colspan=6>&nbsp;</td></tr>
+    <tr><td colspan=6 style='text-align:right;font-size:12pt'><%= link_to 'Enter New Action Step', new_action_step_path %></td></tr>
+    <tr><td colspan=6>&nbsp;</td></tr>
     <tr>
       <th>Description</th>
       <th>Target Date</th>
