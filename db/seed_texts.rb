@@ -10,10 +10,9 @@ end
 
 records =  eval(str)
 
-puts records.class
 
 
-# SystemText.delete_all
+SystemText.delete_all
 
 # pp = eval(str)
 
