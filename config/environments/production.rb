@@ -77,4 +77,15 @@ OneGoal::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'google.com',
+  user_name:            SystemText.text_for_key('EMAIL_SENDER_ADDRESS'),
+  password:             SystemText.text_for_key('EMAIL_SENDER_PASSWORD'),
+  authentication:       'login'
+  }
+
 end

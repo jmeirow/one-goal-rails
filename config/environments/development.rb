@@ -36,8 +36,8 @@ OneGoal::Application.configure do
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'google.com',
-  user_name:            'joe.meirow@gmail.com',
-  password:             'Monie423!!',
+  user_name:            SystemText.text_for_key('EMAIL_SENDER_ADDRESS'),
+  password:             SystemText.text_for_key('EMAIL_SENDER_PASSWORD'),
   authentication:       'login'
   }
 
