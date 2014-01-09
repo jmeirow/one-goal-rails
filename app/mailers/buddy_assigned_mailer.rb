@@ -1,6 +1,6 @@
 class BuddyAssignedMailer < ActionMailer::Base
 
-  default from: SystemText.text_for_key('EMAIL_SENDER_ADDRESS')
+  default from: ENV['EMAIL_SENDER_ADDRESS']
   
   def buddy_assigned_mailer(member)
     @url = 'https://onegoalrails.herokuapp.com/login'
@@ -13,6 +13,6 @@ class BuddyAssignedMailer < ActionMailer::Base
     @text.gsub!(/@webmaster/,SystemText.text_for_key('WEBMASTER_EMAIL_ADDRESS'))
 
 
-    mail(to: @member.email, from: SystemText.text_for_key('EMAIL_SENDER_ADDRESS'), subject: SystemText.text_for_key('EMAIL_BUDDY_ASSIGNED_SUBJECT')   )
+    mail(to: @member.email, from: ENV['EMAIL_SENDER_ADDRESS'], subject: SystemText.text_for_key('EMAIL_BUDDY_ASSIGNED_SUBJECT')   )
   end
 end
