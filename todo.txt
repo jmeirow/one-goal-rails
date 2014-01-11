@@ -1,15 +1,23 @@
 
 
-FAQ inside and out
-Forgot my password
+DONE FAQ inside and out
+DONE Forgot my password
+DONE make text larger on the action_steps detail lines
+DONE  Change resources page to one big SystemText page with an email address to send to 
+DONE Remove ResourceApproval link from menu
+DONE fix header horizontal bars header
+DONE fix the text and submit button position on the Goal entry page
 
-Change resources page to one big SystemText page with an email address to send to 
-
-Remove ResourceApproval link from menu
-
-fix the text and submit button position on the Goal entry page
+Add the count of logins
 
 add a static goal page to list all goals.
 
-make text larger on the action_steps detail lines
+
+
+
+
+
+
+
+
 

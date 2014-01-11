@@ -1,27 +1,25 @@
-<h1>ONE Goal Web Resources</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th>Description</th>
-    </tr>
-  </thead>
+<%= raw SystemText.text_for_key('RESOURCES_PAGE_HEADING') %>
 
-  <tbody>
-    <% @web_resources.each do |web_resource| %>
-      <tr>
-        <td><a href='<%= web_resource.url %>' target='_blank'>View</a></td>
-        <td><%= web_resource.description %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+<p>
+  <a href='mailto:<%= SystemText.text_for_key('RESOURCES_EMAIL') %>'><%= raw SystemText.text_for_key('RESOURCES_SUGGESTION_PROMPT') %></a>
+</p>
+
+
+<div class='container'>
+
+  <%= raw SystemText.text_for_key('RESOURCES_TEXT') %>
+
+</div>
+
+
 
 <br>
 
-<%= link_to 'Suggest a Web Resource', new_web_resource_path %>
+
 
 <br/>
 
-<%= paginate @web_resources %>
+

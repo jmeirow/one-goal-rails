@@ -2,6 +2,6 @@
 
 
 
-#require_relative './seed_texts.rb'
+require_relative './seed_texts.rb'
 
-puts "nothing to seed..."
+#puts "nothing to seed..."

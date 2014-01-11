@@ -1,6 +1,6 @@
 <% if secured_page? %>
 	<% @marquee_text ||= Goal.marquee_text %>
-	<div style="float:bottom; width:100%;  height:20px; font-size:12pt;  background-color: maroon; color: white">
+	<div style="float:bottom; width:1000px;  height:20px; font-size:12pt;  background-color: maroon; color: white">
 	  <marquee scrollamount='2' scrolldelay='1' direction="left" onmouseover="this.stop()" onmouseout="this.start()"><%= @marquee_text %></marquee>
 	  </div>
 	</div>
