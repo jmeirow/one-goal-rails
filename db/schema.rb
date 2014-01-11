@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106022631) do
+ActiveRecord::Schema.define(version: 20140111141908) do
 
   create_table "action_steps", force: true do |t|
     t.string   "description"
@@ -85,6 +85,10 @@ ActiveRecord::Schema.define(version: 20140106022631) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "password_reset_token"
+    t.string   "auth_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "web_resources", force: true do |t|

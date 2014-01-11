@@ -20,75 +20,60 @@
   <% end %>
 
  
+  <div>
+    <div>
+        <div style='font-size:18px; height:50px; margin-left:20px; border-top-left-radius:10px; border-top-right-radius:10px; width:400px; background-color:maroon; color:white; margin-left:30px; float-left; '> 
+          <br/>
+            <span style='margin-top:10px;margin-left:120px'>
+              My ONE Goal
+            </span>
+        </div>
 
-    <div style='
-        font-size:18px;
-        height:50px;
-        margin-left:20px;
-        border-top-left-radius:10px;
-        border-top-right-radius:10px;
-        width:400px;
-        background-color:maroon;
-        color:white;
-        margin-left:30px;
-        '>
-        <br/>
-        <span style='margin-top:10px;margin-left:120px'>
-          My ONE Goal
-        </span>
+
+        <div style='font-size:18px; margin-left:30px; width:600px; height:300px; border-bottom-left-radius:10px; border-bottom-right-radius:10px; border-top-right-radius:10px; border:2px solid; border-color:#800000; float:left '>
+          <br/>
+          <div style='margin-left:27px;margin-top:20px'>
+              <%= f.text_area :description,  :rows => 3, :cols => 10 %>
+          </div>
+          <p style='margin-left:30px; margin-top:-7px'><%=raw SystemText.text_for_key('GOAL_DESCRIPTION') %></p><br>
+
+
+          <div style='margin-left:27px;margin-top:20px'>
+            <%= f.text_area :note,  :rows => 3, :cols => 10 %>
+          </div>
+          <p style='margin-left:30px; margin-top:-7px'><%=raw SystemText.text_for_key('GOAL_NOTE_DESCRIPTION') %></p><br>
+        </div>
+       
+
+        <div style='font-size:18px; width:200px;  float:right; '> 
+          <p>
+          <strong>What type of goals does this program encompass?</strong></p>
+          <p>
+          Just about anything. Do you want to lose weight? Do you want to run a marathon? Do you want to have a better relationship – with your spouse, your parents, your children or your friends? Do you want to get a promotion at work? Do you want to run for public office? Do you want to earn a Competent Communicator (CC) designation? We – the D28 Toastmasters community – can help you achieve it.
+          </p>
+        </div>
     </div>
-    <div style='
-      font-size:18px;
-      margin-left:30px;
-      width:60%;
-      height:300px;
-      border-bottom-left-radius:10px;
-      border-bottom-right-radius:10px;
-      border-top-right-radius:10px;
-      border:2px solid;
-      border-color:#800000;
-      float:left
-      '>
-      <br/>
 
-      <div style='margin-left:27px;margin-top:20px'>
-          <%= f.text_area :description,  :rows => 3, :cols => 10 %>
-      </div>
-      <p style='margin-left:30px; margin-top:-7px'><%=raw SystemText.text_for_key('GOAL_DESCRIPTION') %></p><br>
-
-
-      <div style='margin-left:27px;margin-top:20px'>
-        <%= f.text_area :note,  :rows => 3, :cols => 10 %>
-      </div>
-      <p style='margin-left:30px; margin-top:-7px'><%=raw SystemText.text_for_key('GOAL_NOTE_DESCRIPTION') %></p><br>
+    <div style='' class="actions">
+      <%= f.submit "Save Goal" %>
+    </div>
     
-    </div>
-   
-
-
-
-
-    <div style='
-      font-size:18px;
-      width:35%;
-      margin-right:10px;
-      margin-left:10px;
-      height:300px;
-      float:right;
-      '
-
-      >
-      <p>
-      <strong>What type of goals does this program encompass?</strong></p>
-      <p>
-      Just about anything. Do you want to lose weight? Do you want to run a marathon? Do you want to have a better relationship – with your spouse, your parents, your children or your friends? Do you want to get a promotion at work? Do you want to run for public office? Do you want to earn a Competent Communicator (CC) designation? We – the D28 Toastmasters community – can help you achieve it.
-      </p>
-    </div>
-
-
-
-
-  <div style='margin-left:30px;margin-top:20px' class="actions">
-    <%= f.submit "Save Goal" %>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% end %>
+

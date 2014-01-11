@@ -1,4 +1,4 @@
-# == Route Map (Updated 2014-01-05 18:59)
+# == Route Map (Updated 2014-01-11 09:35)
 #
 #               Prefix Verb   URI Pattern                         Controller#Action
 #    edit_current_user GET    /user/edit(.:format)                users#edit
@@ -11,7 +11,7 @@
 #  unauthorized_access GET    /unauthorized_access(.:format)      sessions#unauthorized_access
 # complete_action_step GET    /complete_action_step/:id(.:format) action_steps#complete_action_step
 #              pending GET    /pending(.:format)                  web_resources#pending
-#               review GET    /review(.:format)                   web_resources#review/:id
+#               review GET    /review/:id(.:format)               web_resources#review
 #                  faq GET    /faq(.:format)                      sessions#faq
 #             sessions GET    /sessions(.:format)                 sessions#index
 #                      POST   /sessions(.:format)                 sessions#create
@@ -69,6 +69,14 @@
 #                      PATCH  /web_resources/:id(.:format)        web_resources#update
 #                      PUT    /web_resources/:id(.:format)        web_resources#update
 #                      DELETE /web_resources/:id(.:format)        web_resources#destroy
+#      password_resets GET    /password_resets(.:format)          password_resets#index
+#                      POST   /password_resets(.:format)          password_resets#create
+#   new_password_reset GET    /password_resets/new(.:format)      password_resets#new
+#  edit_password_reset GET    /password_resets/:id/edit(.:format) password_resets#edit
+#       password_reset GET    /password_resets/:id(.:format)      password_resets#show
+#                      PATCH  /password_resets/:id(.:format)      password_resets#update
+#                      PUT    /password_resets/:id(.:format)      password_resets#update
+#                      DELETE /password_resets/:id(.:format)      password_resets#destroy
 #                 root GET    /                                   sessions#new
 #
 
@@ -111,6 +119,7 @@ OneGoal::Application.routes.draw do
   resources :members 
   resources :system_texts
   resources :web_resources
+  resources :password_resets
 
   root 'sessions#new'
 

@@ -2,5 +2,14 @@
 
 FAQ inside and out
 Forgot my password
-Resources - don't reqiure URL
-resources - notice 'your resource been submitted...'
+
+Change resources page to one big SystemText page with an email address to send to 
+
+Remove ResourceApproval link from menu
+
+fix the text and submit button position on the Goal entry page
+
+add a static goal page to list all goals.
+
+make text larger on the action_steps detail lines
+

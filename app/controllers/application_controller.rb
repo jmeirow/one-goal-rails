@@ -1,3 +1,6 @@
+
+# require 'pry'
+# require 'pry_debug'
 require 'pp'
 
 class ApplicationController < ActionController::Base
@@ -13,7 +16,11 @@ class ApplicationController < ActionController::Base
   private
 
   def secured_page?
-    ['/login', '/about', '/signup', '/home', '/sessions' , '/users', '/faq' ].include?(request.fullpath.strip) == false
+    !public_page?
+  end
+
+  def public_page?
+    ['/login', '/about', '/signup', '/home', '/sessions' , '/users', '/faq' ].include?(request.fullpath.strip) || request.fullpath.strip.start_with?('/password_resets')
   end
 
   def authenticate

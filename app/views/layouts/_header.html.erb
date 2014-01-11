@@ -1,7 +1,48 @@
-<div id='header'>
-			<div style='width:100%'>
-				<%= image_tag("tm-logo.jpg")    %>  
-			</div>
-			
+	<div id='header'>
+				<div style='width:100%'>
+					<%= image_tag("tm-logo.jpg")    %>  
+				</div>
+				
 
+
+		<% if session.keys.include? 'user_id' %>
+			<% member = Member.where("user_id = ?",session['user_id'].to_i).first  %>
+			<div class='container'  style='width:100%'>
+				<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
+					<% if member.nil? == false %>
+						<tr class='row'><td colspan=5>Logged in as: <%= "#{member.first_name} #{member.last_name}" %></td></tr>
+					<% end %>
+					<tr class='row'>
+						<td style='background-color:<%=menu_bg_color('/goals/new') %>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/goals/new')%>' 		href='/goals/new'>My ONE Goal</a></td>
+						<td style='background-color:<%=menu_bg_color('/action_steps')%>;text-align:center;font-size:14pt'>	<a style='color:<%=menu_text_color('/action_steps')%>'; 	href='/action_steps'>Action Steps</a></td>
+						<td style='background-color:<%=menu_bg_color('/web_resources')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/web_resources')%>'	   	href='/web_resources'>Resources</a></td>
+
+						<% if Member.where("user_id = ? ", session['user_id'] ).count == 1 %>
+							<td style='background-color:<%=menu_bg_color('/member')%>;text-align:center;font-size:14pt'> 	<a style=';color:<%=menu_text_color('/member')%>'	 href='/members/<%=member.id%>/edit'>Member Info</a></td>
+						<% end %>
+
+
+						<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %> 
+
+						<% if user_is_admin %>
+							<td style='background-color:<%=menu_bg_color('/system_texts')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/system_texts')%>'   href='/system_texts'>System Text</a></td>
+							<td style='background-color:<%=menu_bg_color('/pending', '/review')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/pending', '/review')%>'   href='/pending'>Pending Resources</a></td>
+						<% end %>
+
+						<td style='background-color:<%=menu_bg_color('/logout')%>;color:<%=menu_text_color('/logout')%>;text-align:center;font-size:14pt'><a href='/logout'>Sign Out</a></td>
+					</tr>
+				</table>
+			</div>
+			<% else %>
+			<table  style=';margin-top:-10px;margin-left:-15px;width:100%'>
+				<tr class='row'>
+					<td style='background-color:<%=menu_bg_color('/login')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/login')%>'   href='/login'>Home</a></td>
+					<td style='background-color:<%=menu_bg_color('/about')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/about')%>'   href='/about'>Tell Me More</a></td>
+					<td style='background-color:<%=menu_bg_color('/signup')%>;text-align:center;font-size:14pt'>	<a style=';color:<%=menu_text_color('/signup')%>'  href='/signup'>Register</a></td>
+					<td style='background-color:<%=menu_bg_color('/faq')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/faq')%>'     href='/faq'>FAQ</a></td>
+				</tr>
+			</table>
+
+		<% end %>
+	</div>
 
