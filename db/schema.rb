@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111141908) do
+ActiveRecord::Schema.define(version: 20140111184816) do
 
   create_table "action_steps", force: true do |t|
     t.string   "description"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20140111141908) do
     t.string   "club_name"
     t.integer  "user_id"
     t.string   "display_name"
+  end
+
+  create_table "session_counts", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "login_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "system_texts", force: true do |t|

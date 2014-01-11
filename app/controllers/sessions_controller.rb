@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login], params[:password])
     if user
       session[:user_id] = user.id
+      SessionCount.create(:user_id => user.id, :login_date => DateTime.now)
       redirect_to '/determine_next_step'
     else
       flash.now[:alert] = "Invalid login or password."
