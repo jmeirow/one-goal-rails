@@ -11,9 +11,9 @@ class MembersController < ApplicationController
 
   def counts
     check_for_admin
-    @members = Member.all
+    @members = Member.all.order('created_at DESC')
 
-    @logins = SessionCount.all.order('create_at DESC')
+    @logins = SessionCount.all
     @logins_today = SessionCount.all.select{|x|  x.login_date.localtime.to_date == Date.today }.count
     @logins_this_week =  SessionCount.all.select{|x| x.login_date.localtime.to_date >= (Date.today  - 7.days)  }.count
     @logins_this_month = SessionCount.all.select{|x| x.login_date.localtime.to_date >= (Date.today  - 30.days) }.count
