@@ -112,6 +112,9 @@ OneGoal::Application.routes.draw do
   get 'counts' => 'members#counts', :as => :counts
 
 
+  get 'public_goals' => 'members#index', :as => :public_goals
+
+
   resources :sessions
   resources :users
   resources :goals 

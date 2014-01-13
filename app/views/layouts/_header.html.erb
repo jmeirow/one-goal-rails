@@ -20,6 +20,7 @@
 						<% end %>
 
 						<td style='background-color:<%=menu_bg_color('/faq')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/faq')%>'     href='/faq'>FAQ</a></td>
+						<td style='background-color:<%=menu_bg_color('/public_goals')%>;text-align:center;font-size:14pt'>		<a style=';color:<%=menu_text_color('/public_goals')%>'     href='/public_goals'>D28 Goals</a></td>
 
 						<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %> 
 
