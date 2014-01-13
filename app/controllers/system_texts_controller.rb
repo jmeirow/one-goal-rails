@@ -80,10 +80,5 @@ class SystemTextsController < ApplicationController
     end
 
 
-    def check_for_admin
-      is_admin = Administrator.all.collect{|x| x.user_id}.include?(session['user_id'])
-      redirect_to new_goal_path , :notice => "You are NOT an administrator!" unless is_admin
-    end
-
 
 end

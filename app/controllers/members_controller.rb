@@ -6,8 +6,20 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    #@members = Member.all
   end
+
+
+  def counts
+    check_for_admin
+    @members = Member.all
+
+    @logins = SessionCount.all 
+    @logins_today = SessionCount.all.select{|x|  x.login_date.localtime.to_date == Date.today }.count
+    @logins_this_week =  SessionCount.all.select{|x| x.login_date.localtime.to_date >= (Date.today  - 7.days)  }.count
+    @logins_this_month = SessionCount.all.select{|x| x.login_date.localtime.to_date >= (Date.today  - 30.days) }.count
+  end
+
+
 
   # GET /members/1
   # GET /members/1.json

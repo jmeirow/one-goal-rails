@@ -3,8 +3,6 @@
 					<%= image_tag("tm-logo.jpg")    %>  
 				</div>
 				
-
-
 		<% if session.keys.include? 'user_id' %>
 			<% member = Member.where("user_id = ?",session['user_id'].to_i).first  %>
 			<div    style='width:100%'>
@@ -26,6 +24,9 @@
 						<% user_is_admin = Administrator.all.collect{|admin| admin.user_id }.include?(session['user_id']) %> 
 
 						<% if user_is_admin %>
+
+
+							<td style='background-color:<%=menu_bg_color('/counts')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/counts')%>'   href='/counts'>Reports</a></td>
 							<td style='background-color:<%=menu_bg_color('/system_texts')%>;text-align:center;font-size:14pt'><a  style='color:<%=menu_text_color('/system_texts')%>'   href='/system_texts'>System Text</a></td>
 						<% end %>
 

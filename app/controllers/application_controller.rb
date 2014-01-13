@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :secured_page?
+  helper_method :secured_page?, :check_for_admin
+
 
   before_filter :authenticate 
 
@@ -38,6 +39,11 @@ class ApplicationController < ActionController::Base
     !session[:user_id].nil?
   end
 
+
+  def check_for_admin
+    is_admin = Administrator.all.collect{|x| x.user_id}.include?(session['user_id'])
+    redirect_to new_goal_path , :notice => "You are NOT an administrator!" unless is_admin
+  end
 
 
 

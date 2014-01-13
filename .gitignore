@@ -28,6 +28,7 @@ capybara-*.html
 /public/system/*
 /public/assets/*
 /coverage/
+set_env.sh
 /spec/tmp/*
 **.orig
 rerun.txt

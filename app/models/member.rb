@@ -25,7 +25,6 @@ class Member < ActiveRecord::Base
     validate :buddy_selection 
 
 
-
     def self.for_user user 
       id = (user.class == User) ? user.id : user
       member = Goal.find_by_user_id(id)
@@ -71,6 +70,13 @@ class Member < ActiveRecord::Base
       else
         x['id']
       end
+    end
+
+
+
+    def goal 
+      goal = Goal.where("user_id  = ? ", user_id).first
+      goal.blank? == true ? "Not yet entered"   :  goal.description
     end
 
 

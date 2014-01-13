@@ -109,7 +109,7 @@ OneGoal::Application.routes.draw do
 
   get 'faq' => 'sessions#faq', :as => :faq
 
-
+  get 'counts' => 'members#counts', :as => :counts
 
 
   resources :sessions
