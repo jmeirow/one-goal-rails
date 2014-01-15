@@ -54,6 +54,7 @@ class Member < ActiveRecord::Base
     def next_available_buddy
 
       sql = "
+      
         select * 
         from members where wants_a_buddy = 'y'
         and id <> #{self.id} and id not in (
