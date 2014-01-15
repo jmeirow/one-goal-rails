@@ -55,8 +55,8 @@ class Member < ActiveRecord::Base
 
       sql = "
         select * 
-        from members 
-        where id <> #{self.id} and id not in (
+        from members where wants_a_buddy = 'y'
+        and id <> #{self.id} and id not in (
           select member_id_1 as member_id from buddies
           union
           select member_id_2 as member_id from buddies
