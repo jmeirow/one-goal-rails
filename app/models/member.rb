@@ -14,6 +14,8 @@
 #  display_name  :string(255)
 #
 
+
+
 class Member < ActiveRecord::Base
 
     after_create :send_welcome_email, :do_buddy_assignment
@@ -54,7 +56,7 @@ class Member < ActiveRecord::Base
     def next_available_buddy
 
       sql = "
-      
+        
         select * 
         from members where wants_a_buddy = 'y'
         and id <> #{self.id} and id not in (
@@ -91,22 +93,13 @@ class Member < ActiveRecord::Base
       if buddy == -1
         send_buddy_waiting_email
       else
-        pair_id = assign_buddy id, buddy
-        send_buddy_assigned_emails pair_id
+        Member.send_buddy_assigned_emails(Member.assign_buddy(id, buddy))
       end
     end
 
 
-    def send_buddy_assigned_emails pair_id 
-      buddy = Buddy.find(pair_id)
-      mbr1 = Member.find(buddy.member_id_1)
-      mbr2 = Member.find(buddy.member_id_2)
-      send_buddy_assigned_email mbr1 
-      send_buddy_assigned_email mbr2 
-    end
 
-
-    def assign_buddy id, buddy_id
+    def self.assign_buddy id, buddy_id
       buddy = Buddy.new 
       buddy.member_id_1 = id
       buddy.member_id_2 = buddy_id 
@@ -157,9 +150,13 @@ class Member < ActiveRecord::Base
     end
 
 
-    def send_buddy_assigned_email member
-
-      BuddyAssignedMailer.buddy_assigned_mailer(member).deliver
+    def self.send_buddy_assigned_emails pair_id
+      buddy = Buddy.find(pair_id)
+      mbr1 = Member.find(buddy.member_id_1)
+      mbr2 = Member.find(buddy.member_id_2)
+      text = SystemText.text_for_key('EMAIL_BUDDY_ASSIGNED_TEXT') 
+      BuddyAssignedMailer.buddy_assigned_mailer(mbr1,mbr2,text).deliver
+      BuddyAssignedMailer.buddy_assigned_mailer(mbr2,mbr1,text).deliver
     end
 
 
@@ -181,12 +178,12 @@ class Member < ActiveRecord::Base
     #
 
 
-    def buddy
+    # def buddy
 
-      row =    Buddy.where("member_id_1 = ? or member_id_2 = ?", id,id).first
-      @buddy = Member.where("id in (?)",  [row.member_id_1, row.member_id_2] - [id]).first 
-      @buddy
-    end
+    #   row =    Buddy.where("member_id_1 = ? or member_id_2 = ?", id,id).first
+    #   @buddy = Member.where("id in (?)",  [row.member_id_1, row.member_id_2] - [id]).first 
+    #   @buddy
+    # end
 
 
     def email

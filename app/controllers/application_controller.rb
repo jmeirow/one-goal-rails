@@ -1,6 +1,4 @@
 
-# require 'pry'
-# require 'pry_debug'
 require 'pp'
 
 class ApplicationController < ActionController::Base
